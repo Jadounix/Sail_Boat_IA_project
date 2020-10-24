@@ -13,7 +13,7 @@ namespace IA_Project
 
         }
 
-        //fonction qui calcule le temps de navigation entre 2 points proches
+        //fonction qui calcule le temps de navigation entre 2 points proches (x1,y1) et (x2,y2)
         public double time_estimation(double x1, double y1, double x2, double y2)
         {
             double distance = Math.Sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
@@ -78,6 +78,7 @@ namespace IA_Project
             else if (y > 150)
                 return 170;
             else return 65;
-        }
+        }
+
     }
 }
