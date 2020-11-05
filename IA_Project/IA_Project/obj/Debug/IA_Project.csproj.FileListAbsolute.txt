@@ -1,0 +1,10 @@
+C:\Users\Jade\Documents\GitHub\Sail_Boat_IA_project\IA_Project\IA_Project\bin\Debug\IA_Project.exe.config
+C:\Users\Jade\Documents\GitHub\Sail_Boat_IA_project\IA_Project\IA_Project\bin\Debug\IA_Project.exe
+C:\Users\Jade\Documents\GitHub\Sail_Boat_IA_project\IA_Project\IA_Project\bin\Debug\IA_Project.pdb
+C:\Users\Jade\Documents\GitHub\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.csprojAssemblyReference.cache
+C:\Users\Jade\Documents\GitHub\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.AffichageGraphique.resources
+C:\Users\Jade\Documents\GitHub\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.Properties.Resources.resources
+C:\Users\Jade\Documents\GitHub\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.csproj.GenerateResource.cache
+C:\Users\Jade\Documents\GitHub\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.csproj.CoreCompileInputs.cache
+C:\Users\Jade\Documents\GitHub\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.exe
+C:\Users\Jade\Documents\GitHub\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.pdb
