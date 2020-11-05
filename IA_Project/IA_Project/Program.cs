@@ -18,10 +18,13 @@ namespace IA_Project
             /// <summary>
             /// Point d'entrée principal de l'application.
             /// </summary>
-          
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AffichageGraphique());
+
+            /* Application.EnableVisualStyles();
+             Application.SetCompatibleTextRenderingDefault(false);
+             Application.Run(new AffichageGraphique());*/
+            Console.WriteLine("je suis en vie");
+
+            Console.ReadLine();
         }
        
     } 
