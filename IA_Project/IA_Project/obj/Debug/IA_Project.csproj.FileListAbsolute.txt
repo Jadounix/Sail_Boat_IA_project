@@ -8,3 +8,13 @@ C:\Users\Jade\Documents\GitHub\Sail_Boat_IA_project\IA_Project\IA_Project\obj\De
 C:\Users\Jade\Documents\GitHub\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.csproj.CoreCompileInputs.cache
 C:\Users\Jade\Documents\GitHub\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.exe
 C:\Users\Jade\Documents\GitHub\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.pdb
+D:\Documents\ENSC\2A\IA\Projet\code\Sail_Boat_IA_project\IA_Project\IA_Project\bin\Debug\IA_Project.exe.config
+D:\Documents\ENSC\2A\IA\Projet\code\Sail_Boat_IA_project\IA_Project\IA_Project\bin\Debug\IA_Project.exe
+D:\Documents\ENSC\2A\IA\Projet\code\Sail_Boat_IA_project\IA_Project\IA_Project\bin\Debug\IA_Project.pdb
+D:\Documents\ENSC\2A\IA\Projet\code\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.csprojAssemblyReference.cache
+D:\Documents\ENSC\2A\IA\Projet\code\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.AffichageGraphique.resources
+D:\Documents\ENSC\2A\IA\Projet\code\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.Properties.Resources.resources
+D:\Documents\ENSC\2A\IA\Projet\code\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.csproj.GenerateResource.cache
+D:\Documents\ENSC\2A\IA\Projet\code\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.csproj.CoreCompileInputs.cache
+D:\Documents\ENSC\2A\IA\Projet\code\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.exe
+D:\Documents\ENSC\2A\IA\Projet\code\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.pdb

@@ -132,6 +132,7 @@ namespace IA_Project
 
         //fonctions pour la vitesse et la direction du vent
         public char cas = 'a'; // à modifier en ‘b’ ou ‘c’ selon le choix de l’utilisateur
+        //faudra le mettre en paramètre
         public double get_wind_speed(double x, double y)
         {
             if (cas == 'a')
