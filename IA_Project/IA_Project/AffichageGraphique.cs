@@ -134,14 +134,15 @@ namespace IA_Project
             // graphique (avoir un truc jouli
             // point de départ en cliquant plutot qu'en saisissant des coordonnées
             // avoir le chemin graphique (dessiner des segments)
-            //ergonomie mon amie
+
             //animer la trajectoire ?
 
             //diagonales
             // passer les valeurs en parametre et pas en dur
 
             // heuristique 
-            
+
+            //ergonomie mon amie
         }
 
         private void casBButton_Click(object sender, EventArgs e)
@@ -178,6 +179,9 @@ namespace IA_Project
             YDest = Convert.ToDouble(yDestBox.Text);
         }
 
-                
+        
+
+
+        // selectionner points de départ et d'arriver sur la PictureBox
     }
 }
