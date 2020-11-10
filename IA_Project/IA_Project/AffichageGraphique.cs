@@ -12,8 +12,9 @@ namespace IA_Project
 {
     public partial class AffichageGraphique : Form
     {
-        SearchTree arbre;
+        SearchTree tree;
         private double xInit, yInit, xDest, yDest;
+        static double tailleMap = 300;
 
         public double XInit { 
             get => xInit;
@@ -91,48 +92,15 @@ namespace IA_Project
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //on récupère la position initiale du bateau
-            // on récupère la position de la destination du bateau
-            // se fera par défaut dès que l'utilisateur va rentrer des valeurs
 
-            Console.WriteLine("xinit " + xInit + "\n yinit"+ yInit);
-
-            // déterminer le Node0
-
-            // appeler RechecheA*
-
-
-            // on initiailise ce qu'il faut initialiser
-
-
-
-            arbre = new SearchTree();
-
-            // appel d'une fonction ?
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        /*private void RecupererPositions()
         {
 
-        }
+        }*/
 
-        private void button3_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void RecupererPositions()
-        {
-
-        }
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
-        }
-
+        // a supprimer dans l'affichage graphique
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -140,33 +108,76 @@ namespace IA_Project
 
 
 
+
+        //listener des boutons : 
+
+        private void casAButton_Click(object sender, EventArgs e)
+        {
+            //on récupère la position initiale du bateau
+            // on récupère la position de la destination du bateau
+            // se fera par défaut dès que l'utilisateur va rentrer des valeurs
+
+            Console.WriteLine("xinit " + xInit + "\n yinit" + yInit);
+
+            // déterminer le Node0
+            NodeSailBoat node0 = new NodeSailBoat(xInit, yInit);
+
+            //cree le searchTree
+            tree = new SearchTree();
+
+            // appeler RechecheA*
+
+            List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
+
+            tree.GetSearchTree(treeViewBox);
+
+            // graphique (avoir un truc jouli
+            // point de départ en cliquant plutot qu'en saisissant des coordonnées
+            // avoir le chemin graphique (dessiner des segments)
+            //ergonomie mon amie
+            //animer la trajectoire ?
+
+            //diagonales
+            // passer les valeurs en parametre et pas en dur
+
+            // heuristique 
+            
+        }
+
+        private void casBButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void casCButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
         // verifier si on garde listener sur textChanged : risque de changer la valeur au milieu de l'execution du code ? 
+        //events lorsque le texte des textbox est modifié : 
 
-
-
-
-        //textbox x initial
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void xInitBox_TextChanged(object sender, EventArgs e)
         {
-            XInit = Convert.ToDouble(textBox1.Text);
+            XInit = Convert.ToDouble(xInitBox.Text);
         }
 
-        //textbox y initial
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void yInitBox_TextChanged(object sender, EventArgs e)
         {
-            YInit = Convert.ToDouble(textBox2.Text);
+            YInit = Convert.ToDouble(yInitBox.Text);
         }
 
-        // textbox x final
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        private void xDestBox_TextChanged(object sender, EventArgs e)
         {
-            XDest = Convert.ToDouble(textBox4.Text);
+            XDest = Convert.ToDouble(xDestBox.Text);
         }
 
-        // textbox y final
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void yDestBox_TextChanged(object sender, EventArgs e)
         {
-            YDest = Convert.ToDouble(textBox3.Text);
+            YDest = Convert.ToDouble(yDestBox.Text);
         }
+
+                
     }
 }

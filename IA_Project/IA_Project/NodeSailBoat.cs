@@ -37,11 +37,14 @@ namespace IA_Project
             return time_estimation(this.coorX, this.coorY, noeudSuivant.coorX, noeudSuivant.coorY);
         }
 
+
+
+        //adapter avec des valeurs dynamiques
         public override bool EndState()
         {
             bool fini = false;
-            //cas 1 : point d'arrivée (200,100)
-            if(this.coorX == 200 && this.coorY == 100)
+            //cas 1 : point d'arrivée (5,5)
+            if(this.coorX == 5 && this.coorY == 5)
             {
                 fini = true;
             }
@@ -56,25 +59,27 @@ namespace IA_Project
 
             //Pour l'instant pas de déplacement en diagonale
             //à chaque fois on teste si le noeud est en dehors de la map ou pas
-            if(TestEnDehorsMap(this.coorX + 1, this.coorY))
+            if(!TestEnDehorsMap(this.coorX + 1, this.coorY))
             {
                 lsucc.Add(new NodeSailBoat(this.coorX + 1, this.coorY));
             }
-            if (TestEnDehorsMap(this.coorX - 1, this.coorY))
+            if (!TestEnDehorsMap(this.coorX - 1, this.coorY))
             {
                 lsucc.Add(new NodeSailBoat(this.coorX - 1, this.coorY));
             }
-            if (TestEnDehorsMap(this.coorX, this.coorY + 1))
+            if (!TestEnDehorsMap(this.coorX, this.coorY + 1))
             {
                 lsucc.Add(new NodeSailBoat(this.coorX, this.coorY + 1));
             }
-            if (TestEnDehorsMap(this.coorX, this.coorY - 1))
+            if (!TestEnDehorsMap(this.coorX, this.coorY - 1))
             {
                 lsucc.Add(new NodeSailBoat(this.coorX, this.coorY - 1));
             }
             return lsucc;
         }
 
+
+        //a adapter avec val dynamiques
         public bool TestEnDehorsMap(double X, double Y)
         {
             bool dehors = false;
@@ -157,6 +162,13 @@ namespace IA_Project
             else if (y > 150)
                 return 170;
             else return 65;
+        }
+
+
+        public override string ToString()
+        {
+            string txt = "("+coorX+","+coorY+")";
+            return txt;
         }
     }
 }

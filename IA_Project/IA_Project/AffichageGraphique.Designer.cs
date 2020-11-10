@@ -30,20 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AffichageGraphique));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.positionInitialeTxt = new System.Windows.Forms.Label();
+            this.positionFinaleTxt = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.xInitBox = new System.Windows.Forms.TextBox();
+            this.yInitBox = new System.Windows.Forms.TextBox();
+            this.xDestBox = new System.Windows.Forms.TextBox();
+            this.yDestBox = new System.Windows.Forms.TextBox();
+            this.casBButton = new System.Windows.Forms.Button();
+            this.casCButton = new System.Windows.Forms.Button();
+            this.casAButton = new System.Windows.Forms.Button();
+            this.treeViewBox = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,82 +57,24 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // positionInitialeTxt
             // 
-            this.button1.Location = new System.Drawing.Point(48, 74);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 37);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Cas a";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.positionInitialeTxt.AutoSize = true;
+            this.positionInitialeTxt.Location = new System.Drawing.Point(315, 299);
+            this.positionInitialeTxt.Name = "positionInitialeTxt";
+            this.positionInitialeTxt.Size = new System.Drawing.Size(102, 17);
+            this.positionInitialeTxt.TabIndex = 9;
+            this.positionInitialeTxt.Text = "Position initiale";
+            this.positionInitialeTxt.Click += new System.EventHandler(this.label1_Click);
             // 
-            // button2
+            // positionFinaleTxt
             // 
-            this.button2.Location = new System.Drawing.Point(48, 144);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(67, 37);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Cas b";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(48, 211);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(67, 37);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Cas c";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // treeView1
-            // 
-            this.treeView1.Location = new System.Drawing.Point(724, 49);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(231, 231);
-            this.treeView1.TabIndex = 4;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            // 
-            // textBox1
-            // 
-            this.textBox1.AccessibleName = "xInit";
-            this.textBox1.Location = new System.Drawing.Point(344, 338);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(74, 22);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(344, 377);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(74, 22);
-            this.textBox2.TabIndex = 6;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(315, 299);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 17);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Position initiale";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(563, 299);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 17);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Position finale";
+            this.positionFinaleTxt.AutoSize = true;
+            this.positionFinaleTxt.Location = new System.Drawing.Point(563, 299);
+            this.positionFinaleTxt.Name = "positionFinaleTxt";
+            this.positionFinaleTxt.Size = new System.Drawing.Size(96, 17);
+            this.positionFinaleTxt.TabIndex = 10;
+            this.positionFinaleTxt.Text = "Position finale";
             // 
             // label3
             // 
@@ -170,41 +112,96 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "x";
             // 
-            // textBox3
+            // xInitBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(585, 377);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(74, 22);
-            this.textBox3.TabIndex = 14;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.xInitBox.Location = new System.Drawing.Point(339, 338);
+            this.xInitBox.Name = "xInitBox";
+            this.xInitBox.Size = new System.Drawing.Size(100, 22);
+            this.xInitBox.TabIndex = 17;
+            this.xInitBox.TextChanged += new System.EventHandler(this.xInitBox_TextChanged);
             // 
-            // textBox4
+            // yInitBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(585, 338);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(74, 22);
-            this.textBox4.TabIndex = 13;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.yInitBox.Location = new System.Drawing.Point(339, 377);
+            this.yInitBox.Name = "yInitBox";
+            this.yInitBox.Size = new System.Drawing.Size(100, 22);
+            this.yInitBox.TabIndex = 18;
+            this.yInitBox.TextChanged += new System.EventHandler(this.yInitBox_TextChanged);
+            // 
+            // xDestBox
+            // 
+            this.xDestBox.Location = new System.Drawing.Point(579, 335);
+            this.xDestBox.Name = "xDestBox";
+            this.xDestBox.Size = new System.Drawing.Size(100, 22);
+            this.xDestBox.TabIndex = 19;
+            this.xDestBox.TextChanged += new System.EventHandler(this.xDestBox_TextChanged);
+            // 
+            // yDestBox
+            // 
+            this.yDestBox.Location = new System.Drawing.Point(579, 377);
+            this.yDestBox.Name = "yDestBox";
+            this.yDestBox.Size = new System.Drawing.Size(100, 22);
+            this.yDestBox.TabIndex = 20;
+            this.yDestBox.TextChanged += new System.EventHandler(this.yDestBox_TextChanged);
+            // 
+            // casBButton
+            // 
+            this.casBButton.Location = new System.Drawing.Point(48, 144);
+            this.casBButton.Name = "casBButton";
+            this.casBButton.Size = new System.Drawing.Size(67, 37);
+            this.casBButton.TabIndex = 21;
+            this.casBButton.Text = "Cas B";
+            this.casBButton.UseVisualStyleBackColor = true;
+            this.casBButton.Click += new System.EventHandler(this.casBButton_Click);
+            // 
+            // casCButton
+            // 
+            this.casCButton.Location = new System.Drawing.Point(48, 201);
+            this.casCButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.casCButton.Name = "casCButton";
+            this.casCButton.Size = new System.Drawing.Size(67, 37);
+            this.casCButton.TabIndex = 22;
+            this.casCButton.Text = "Cas C";
+            this.casCButton.UseVisualStyleBackColor = true;
+            this.casCButton.Click += new System.EventHandler(this.casCButton_Click);
+            // 
+            // casAButton
+            // 
+            this.casAButton.Location = new System.Drawing.Point(48, 84);
+            this.casAButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.casAButton.Name = "casAButton";
+            this.casAButton.Size = new System.Drawing.Size(67, 37);
+            this.casAButton.TabIndex = 23;
+            this.casAButton.Text = "Cas a";
+            this.casAButton.UseVisualStyleBackColor = true;
+            this.casAButton.Click += new System.EventHandler(this.casAButton_Click);
+            // 
+            // treeViewBox
+            // 
+            this.treeViewBox.Location = new System.Drawing.Point(738, 49);
+            this.treeViewBox.Name = "treeViewBox";
+            this.treeViewBox.Size = new System.Drawing.Size(218, 231);
+            this.treeViewBox.TabIndex = 24;
             // 
             // AffichageGraphique
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1041, 429);
+            this.Controls.Add(this.treeViewBox);
+            this.Controls.Add(this.casAButton);
+            this.Controls.Add(this.casCButton);
+            this.Controls.Add(this.casBButton);
+            this.Controls.Add(this.yDestBox);
+            this.Controls.Add(this.xDestBox);
+            this.Controls.Add(this.yInitBox);
+            this.Controls.Add(this.xInitBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.treeView1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.positionFinaleTxt);
+            this.Controls.Add(this.positionInitialeTxt);
             this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AffichageGraphique";
@@ -218,19 +215,19 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label positionInitialeTxt;
+        private System.Windows.Forms.Label positionFinaleTxt;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox xInitBox;
+        private System.Windows.Forms.TextBox yInitBox;
+        private System.Windows.Forms.TextBox xDestBox;
+        private System.Windows.Forms.TextBox yDestBox;
+        private System.Windows.Forms.Button casBButton;
+        private System.Windows.Forms.Button casCButton;
+        private System.Windows.Forms.Button casAButton;
+        private System.Windows.Forms.TreeView treeViewBox;
     }
 }
