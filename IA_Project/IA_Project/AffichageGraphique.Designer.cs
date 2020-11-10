@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AffichageGraphique));
-            this.mapSea = new System.Windows.Forms.PictureBox();
+            this.mapSeaBox = new System.Windows.Forms.PictureBox();
             this.positionInitialeTxt = new System.Windows.Forms.Label();
             this.positionFinaleTxt = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,20 +44,21 @@
             this.casCButton = new System.Windows.Forms.Button();
             this.casAButton = new System.Windows.Forms.Button();
             this.treeViewBox = new System.Windows.Forms.TreeView();
-            ((System.ComponentModel.ISupportInitialize)(this.mapSea)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mapSeaBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // mapSea
+            // mapSeaBox
             // 
-            this.mapSea.Image = ((System.Drawing.Image)(resources.GetObject("mapSea.Image")));
-            this.mapSea.Location = new System.Drawing.Point(207, 16);
-            this.mapSea.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mapSea.MaximumSize = new System.Drawing.Size(300, 300);
-            this.mapSea.MinimumSize = new System.Drawing.Size(300, 300);
-            this.mapSea.Name = "mapSea";
-            this.mapSea.Size = new System.Drawing.Size(300, 300);
-            this.mapSea.TabIndex = 0;
-            this.mapSea.TabStop = false;
+            this.mapSeaBox.Image = ((System.Drawing.Image)(resources.GetObject("mapSeaBox.Image")));
+            this.mapSeaBox.Location = new System.Drawing.Point(207, 16);
+            this.mapSeaBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mapSeaBox.MaximumSize = new System.Drawing.Size(300, 300);
+            this.mapSeaBox.MinimumSize = new System.Drawing.Size(300, 300);
+            this.mapSeaBox.Name = "mapSeaBox";
+            this.mapSeaBox.Size = new System.Drawing.Size(300, 300);
+            this.mapSeaBox.TabIndex = 0;
+            this.mapSeaBox.TabStop = false;
+            this.mapSeaBox.Click += new System.EventHandler(this.mapSeaBox_Click);
             // 
             // positionInitialeTxt
             // 
@@ -204,11 +205,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.positionFinaleTxt);
             this.Controls.Add(this.positionInitialeTxt);
-            this.Controls.Add(this.mapSea);
+            this.Controls.Add(this.mapSeaBox);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AffichageGraphique";
             this.Text = "AffichageGraphique";
-            ((System.ComponentModel.ISupportInitialize)(this.mapSea)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mapSeaBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,7 +217,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox mapSea;
+        private System.Windows.Forms.PictureBox mapSeaBox;
         private System.Windows.Forms.Label positionInitialeTxt;
         private System.Windows.Forms.Label positionFinaleTxt;
         private System.Windows.Forms.Label label3;

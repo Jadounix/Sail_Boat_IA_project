@@ -164,6 +164,8 @@ namespace IA_Project
             XInit = Convert.ToDouble(xInitBox.Text);
         }
 
+       
+
         private void yInitBox_TextChanged(object sender, EventArgs e)
         {
             YInit = Convert.ToDouble(yInitBox.Text);
@@ -179,9 +181,34 @@ namespace IA_Project
             YDest = Convert.ToDouble(yDestBox.Text);
         }
 
-        
+
 
 
         // selectionner points de départ et d'arriver sur la PictureBox
+
+        //determine le point de départ en cliquant sur l'image
+
+
+        //ergonomie : 
+        // avoir plusieurs boutons : selectionner point de départ (radio), point d'arriver(radio), reset
+        // si radio selectionné : valeurs selectionnées pour init ou dest
+
+
+
+
+        //sur la PictureBox : point en haut à gauche à (0,0)
+        //point en bas à gauche : (0,300)
+        private void mapSeaBox_Click(object sender, EventArgs e)
+        {
+
+            MouseEventArgs me = (MouseEventArgs)e;
+            XInit = me.X;
+            YInit = me.Y;
+
+            Console.WriteLine("xinit" + xInit + "yinit" + yInit);
+        }
+
+
+
     }
 }
