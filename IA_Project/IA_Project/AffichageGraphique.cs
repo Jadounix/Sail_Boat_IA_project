@@ -92,23 +92,6 @@ namespace IA_Project
             InitializeComponent();
         }
 
-
-        /*private void RecupererPositions()
-        {
-
-        }*/
-
-
-
-        // a supprimer dans l'affichage graphique
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
         //listener des boutons : 
 
         private void casAButton_Click(object sender, EventArgs e)
@@ -145,15 +128,58 @@ namespace IA_Project
             //ergonomie mon amie
         }
 
+        //à coder
         private void casBButton_Click(object sender, EventArgs e)
         {
 
         }
-
+        //à coder
         private void casCButton_Click(object sender, EventArgs e)
         {
 
         }
+
+
+
+        //si on selectionne l'un des radio button : 
+        // enable les textbox associés, disable les autres
+        // textbox affichent avec les coodonnées de l'image au click
+        // textbox vont update les variables associées
+        private void radioPosInit_CheckedChanged(object sender, EventArgs e)
+        {
+            //on change les paramètres des textBox de la destination pour rendre impossible la modification des valeurs
+            xDestBox.Enabled = false;
+            yDestBox.Enabled = false;
+
+            // les textBox associées peuvent être modifiées
+            xInitBox.Enabled = true;
+            yInitBox.Enabled = true;
+        }
+
+
+        private void radioPosFinale_CheckedChanged(object sender, EventArgs e)
+        {
+            //on change les paramètres des textBox de la position initiale pour rendre impossible la modification des valeurs
+            xInitBox.Enabled = false;
+            yInitBox.Enabled = false;
+
+            // les textBox associées peuvent être modifiées
+            xDestBox.Enabled = true;
+            yDestBox.Enabled = true;
+        }
+
+        //reinitilise les positions de depart et d'arrivee
+        private void reinitButton_Click(object sender, EventArgs e)
+        {
+            double valDefaut = 0;
+            xInitBox.Text = valDefaut.ToString();
+            yInitBox.Text = valDefaut.ToString();
+            xDestBox.Text = valDefaut.ToString();
+            yDestBox.Text = valDefaut.ToString();
+        }
+
+
+
 
 
         // verifier si on garde listener sur textChanged : risque de changer la valeur au milieu de l'execution du code ? 
@@ -163,8 +189,6 @@ namespace IA_Project
         {
             XInit = Convert.ToDouble(xInitBox.Text);
         }
-
-       
 
         private void yInitBox_TextChanged(object sender, EventArgs e)
         {
@@ -182,31 +206,37 @@ namespace IA_Project
         }
 
 
-
-
-        // selectionner points de départ et d'arriver sur la PictureBox
-
-        //determine le point de départ en cliquant sur l'image
-
-
-        //ergonomie : 
-        // avoir plusieurs boutons : selectionner point de départ (radio), point d'arriver(radio), reset
-        // si radio selectionné : valeurs selectionnées pour init ou dest
-
-
-
-
         //sur la PictureBox : point en haut à gauche à (0,0)
         //point en bas à gauche : (0,300)
+
+        //permet d'obtenir les coordonnées du point cliqué sur la map
         private void mapSeaBox_Click(object sender, EventArgs e)
         {
-
+            int x, y;
             MouseEventArgs me = (MouseEventArgs)e;
-            XInit = me.X;
-            YInit = me.Y;
+            x = me.X;
+            y = me.Y;
 
-            Console.WriteLine("xinit" + xInit + "yinit" + yInit);
+            //si position initiale selectionné
+            //on change les valeurs des textBox de la position initiale
+            if(radioPosInit.Checked)
+            {
+                xInitBox.Text = x.ToString();
+                yInitBox.Text = y.ToString();
+
+            }
+            //si position finale selectionné
+            //on change les valeurs des textBox de la position finale
+            else
+            {
+                xDestBox.Text = x.ToString();
+                yDestBox.Text = y.ToString();
+            }
+
+            Console.WriteLine("xinit" + xInit + "   yinit" + yInit);
         }
+
+
 
 
 

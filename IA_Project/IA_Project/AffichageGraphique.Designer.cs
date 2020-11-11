@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AffichageGraphique));
             this.mapSeaBox = new System.Windows.Forms.PictureBox();
-            this.positionInitialeTxt = new System.Windows.Forms.Label();
-            this.positionFinaleTxt = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -44,6 +42,9 @@
             this.casCButton = new System.Windows.Forms.Button();
             this.casAButton = new System.Windows.Forms.Button();
             this.treeViewBox = new System.Windows.Forms.TreeView();
+            this.radioPosInit = new System.Windows.Forms.RadioButton();
+            this.radioPosFinale = new System.Windows.Forms.RadioButton();
+            this.reinitButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mapSeaBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,29 +61,10 @@
             this.mapSeaBox.TabStop = false;
             this.mapSeaBox.Click += new System.EventHandler(this.mapSeaBox_Click);
             // 
-            // positionInitialeTxt
-            // 
-            this.positionInitialeTxt.AutoSize = true;
-            this.positionInitialeTxt.Location = new System.Drawing.Point(183, 377);
-            this.positionInitialeTxt.Name = "positionInitialeTxt";
-            this.positionInitialeTxt.Size = new System.Drawing.Size(102, 17);
-            this.positionInitialeTxt.TabIndex = 9;
-            this.positionInitialeTxt.Text = "Position initiale";
-            this.positionInitialeTxt.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // positionFinaleTxt
-            // 
-            this.positionFinaleTxt.AutoSize = true;
-            this.positionFinaleTxt.Location = new System.Drawing.Point(431, 377);
-            this.positionFinaleTxt.Name = "positionFinaleTxt";
-            this.positionFinaleTxt.Size = new System.Drawing.Size(96, 17);
-            this.positionFinaleTxt.TabIndex = 10;
-            this.positionFinaleTxt.Text = "Position finale";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(186, 416);
+            this.label3.Location = new System.Drawing.Point(204, 390);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(14, 17);
             this.label3.TabIndex = 11;
@@ -91,7 +73,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(186, 455);
+            this.label4.Location = new System.Drawing.Point(204, 429);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 17);
             this.label4.TabIndex = 12;
@@ -100,7 +82,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(427, 455);
+            this.label5.Location = new System.Drawing.Point(387, 429);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 17);
             this.label5.TabIndex = 16;
@@ -109,7 +91,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(427, 416);
+            this.label6.Location = new System.Drawing.Point(387, 390);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(14, 17);
             this.label6.TabIndex = 15;
@@ -117,7 +99,7 @@
             // 
             // xInitBox
             // 
-            this.xInitBox.Location = new System.Drawing.Point(207, 416);
+            this.xInitBox.Location = new System.Drawing.Point(225, 390);
             this.xInitBox.Name = "xInitBox";
             this.xInitBox.Size = new System.Drawing.Size(100, 22);
             this.xInitBox.TabIndex = 17;
@@ -125,7 +107,7 @@
             // 
             // yInitBox
             // 
-            this.yInitBox.Location = new System.Drawing.Point(207, 455);
+            this.yInitBox.Location = new System.Drawing.Point(225, 429);
             this.yInitBox.Name = "yInitBox";
             this.yInitBox.Size = new System.Drawing.Size(100, 22);
             this.yInitBox.TabIndex = 18;
@@ -133,7 +115,8 @@
             // 
             // xDestBox
             // 
-            this.xDestBox.Location = new System.Drawing.Point(447, 413);
+            this.xDestBox.Enabled = false;
+            this.xDestBox.Location = new System.Drawing.Point(407, 387);
             this.xDestBox.Name = "xDestBox";
             this.xDestBox.Size = new System.Drawing.Size(100, 22);
             this.xDestBox.TabIndex = 19;
@@ -141,7 +124,8 @@
             // 
             // yDestBox
             // 
-            this.yDestBox.Location = new System.Drawing.Point(447, 455);
+            this.yDestBox.Enabled = false;
+            this.yDestBox.Location = new System.Drawing.Point(407, 429);
             this.yDestBox.Name = "yDestBox";
             this.yDestBox.Size = new System.Drawing.Size(100, 22);
             this.yDestBox.TabIndex = 20;
@@ -186,11 +170,48 @@
             this.treeViewBox.Size = new System.Drawing.Size(218, 231);
             this.treeViewBox.TabIndex = 24;
             // 
+            // radioPosInit
+            // 
+            this.radioPosInit.AutoSize = true;
+            this.radioPosInit.Checked = true;
+            this.radioPosInit.Location = new System.Drawing.Point(207, 341);
+            this.radioPosInit.Name = "radioPosInit";
+            this.radioPosInit.Size = new System.Drawing.Size(123, 21);
+            this.radioPosInit.TabIndex = 25;
+            this.radioPosInit.TabStop = true;
+            this.radioPosInit.Text = "Position Initiale";
+            this.radioPosInit.UseVisualStyleBackColor = true;
+            this.radioPosInit.CheckedChanged += new System.EventHandler(this.radioPosInit_CheckedChanged);
+            // 
+            // radioPosFinale
+            // 
+            this.radioPosFinale.AutoSize = true;
+            this.radioPosFinale.Location = new System.Drawing.Point(390, 341);
+            this.radioPosFinale.Name = "radioPosFinale";
+            this.radioPosFinale.Size = new System.Drawing.Size(121, 21);
+            this.radioPosFinale.TabIndex = 26;
+            this.radioPosFinale.Text = "Position Finale";
+            this.radioPosFinale.UseVisualStyleBackColor = true;
+            this.radioPosFinale.CheckedChanged += new System.EventHandler(this.radioPosFinale_CheckedChanged);
+            // 
+            // reinitButton
+            // 
+            this.reinitButton.Location = new System.Drawing.Point(315, 484);
+            this.reinitButton.Name = "reinitButton";
+            this.reinitButton.Size = new System.Drawing.Size(100, 36);
+            this.reinitButton.TabIndex = 27;
+            this.reinitButton.Text = "Réinitialiser";
+            this.reinitButton.UseVisualStyleBackColor = true;
+            this.reinitButton.Click += new System.EventHandler(this.reinitButton_Click);
+            // 
             // AffichageGraphique
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1041, 553);
+            this.Controls.Add(this.reinitButton);
+            this.Controls.Add(this.radioPosFinale);
+            this.Controls.Add(this.radioPosInit);
             this.Controls.Add(this.treeViewBox);
             this.Controls.Add(this.casAButton);
             this.Controls.Add(this.casCButton);
@@ -203,8 +224,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.positionFinaleTxt);
-            this.Controls.Add(this.positionInitialeTxt);
             this.Controls.Add(this.mapSeaBox);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AffichageGraphique";
@@ -218,8 +237,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox mapSeaBox;
-        private System.Windows.Forms.Label positionInitialeTxt;
-        private System.Windows.Forms.Label positionFinaleTxt;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -232,5 +249,8 @@
         private System.Windows.Forms.Button casCButton;
         private System.Windows.Forms.Button casAButton;
         private System.Windows.Forms.TreeView treeViewBox;
+        private System.Windows.Forms.RadioButton radioPosInit;
+        private System.Windows.Forms.RadioButton radioPosFinale;
+        private System.Windows.Forms.Button reinitButton;
     }
 }
