@@ -51,12 +51,12 @@
             // mapSeaBox
             // 
             this.mapSeaBox.Image = ((System.Drawing.Image)(resources.GetObject("mapSeaBox.Image")));
-            this.mapSeaBox.Location = new System.Drawing.Point(207, 16);
+            this.mapSeaBox.Location = new System.Drawing.Point(233, 20);
             this.mapSeaBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mapSeaBox.MaximumSize = new System.Drawing.Size(300, 300);
-            this.mapSeaBox.MinimumSize = new System.Drawing.Size(300, 300);
+            this.mapSeaBox.MaximumSize = new System.Drawing.Size(338, 375);
+            this.mapSeaBox.MinimumSize = new System.Drawing.Size(338, 375);
             this.mapSeaBox.Name = "mapSeaBox";
-            this.mapSeaBox.Size = new System.Drawing.Size(300, 300);
+            this.mapSeaBox.Size = new System.Drawing.Size(338, 375);
             this.mapSeaBox.TabIndex = 0;
             this.mapSeaBox.TabStop = false;
             this.mapSeaBox.Click += new System.EventHandler(this.mapSeaBox_Click);
@@ -64,78 +64,83 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(204, 390);
+            this.label3.Location = new System.Drawing.Point(230, 488);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(14, 17);
+            this.label3.Size = new System.Drawing.Size(16, 20);
             this.label3.TabIndex = 11;
             this.label3.Text = "x";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(204, 429);
+            this.label4.Location = new System.Drawing.Point(230, 536);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(15, 17);
+            this.label4.Size = new System.Drawing.Size(16, 20);
             this.label4.TabIndex = 12;
             this.label4.Text = "y";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(387, 429);
+            this.label5.Location = new System.Drawing.Point(435, 536);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(15, 17);
+            this.label5.Size = new System.Drawing.Size(16, 20);
             this.label5.TabIndex = 16;
             this.label5.Text = "y";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(387, 390);
+            this.label6.Location = new System.Drawing.Point(435, 488);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(14, 17);
+            this.label6.Size = new System.Drawing.Size(16, 20);
             this.label6.TabIndex = 15;
             this.label6.Text = "x";
             // 
             // xInitBox
             // 
-            this.xInitBox.Location = new System.Drawing.Point(225, 390);
+            this.xInitBox.Location = new System.Drawing.Point(253, 488);
+            this.xInitBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xInitBox.Name = "xInitBox";
-            this.xInitBox.Size = new System.Drawing.Size(100, 22);
+            this.xInitBox.Size = new System.Drawing.Size(112, 26);
             this.xInitBox.TabIndex = 17;
             this.xInitBox.TextChanged += new System.EventHandler(this.xInitBox_TextChanged);
             // 
             // yInitBox
             // 
-            this.yInitBox.Location = new System.Drawing.Point(225, 429);
+            this.yInitBox.Location = new System.Drawing.Point(253, 536);
+            this.yInitBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.yInitBox.Name = "yInitBox";
-            this.yInitBox.Size = new System.Drawing.Size(100, 22);
+            this.yInitBox.Size = new System.Drawing.Size(112, 26);
             this.yInitBox.TabIndex = 18;
             this.yInitBox.TextChanged += new System.EventHandler(this.yInitBox_TextChanged);
             // 
             // xDestBox
             // 
             this.xDestBox.Enabled = false;
-            this.xDestBox.Location = new System.Drawing.Point(407, 387);
+            this.xDestBox.Location = new System.Drawing.Point(458, 484);
+            this.xDestBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xDestBox.Name = "xDestBox";
-            this.xDestBox.Size = new System.Drawing.Size(100, 22);
+            this.xDestBox.Size = new System.Drawing.Size(112, 26);
             this.xDestBox.TabIndex = 19;
             this.xDestBox.TextChanged += new System.EventHandler(this.xDestBox_TextChanged);
             // 
             // yDestBox
             // 
             this.yDestBox.Enabled = false;
-            this.yDestBox.Location = new System.Drawing.Point(407, 429);
+            this.yDestBox.Location = new System.Drawing.Point(458, 536);
+            this.yDestBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.yDestBox.Name = "yDestBox";
-            this.yDestBox.Size = new System.Drawing.Size(100, 22);
+            this.yDestBox.Size = new System.Drawing.Size(112, 26);
             this.yDestBox.TabIndex = 20;
             this.yDestBox.TextChanged += new System.EventHandler(this.yDestBox_TextChanged);
             // 
             // casBButton
             // 
-            this.casBButton.Location = new System.Drawing.Point(48, 144);
+            this.casBButton.Location = new System.Drawing.Point(54, 180);
+            this.casBButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.casBButton.Name = "casBButton";
-            this.casBButton.Size = new System.Drawing.Size(67, 37);
+            this.casBButton.Size = new System.Drawing.Size(75, 46);
             this.casBButton.TabIndex = 21;
             this.casBButton.Text = "Cas B";
             this.casBButton.UseVisualStyleBackColor = true;
@@ -143,10 +148,10 @@
             // 
             // casCButton
             // 
-            this.casCButton.Location = new System.Drawing.Point(48, 201);
+            this.casCButton.Location = new System.Drawing.Point(54, 251);
             this.casCButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.casCButton.Name = "casCButton";
-            this.casCButton.Size = new System.Drawing.Size(67, 37);
+            this.casCButton.Size = new System.Drawing.Size(75, 46);
             this.casCButton.TabIndex = 22;
             this.casCButton.Text = "Cas C";
             this.casCButton.UseVisualStyleBackColor = true;
@@ -154,10 +159,10 @@
             // 
             // casAButton
             // 
-            this.casAButton.Location = new System.Drawing.Point(48, 84);
+            this.casAButton.Location = new System.Drawing.Point(54, 105);
             this.casAButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.casAButton.Name = "casAButton";
-            this.casAButton.Size = new System.Drawing.Size(67, 37);
+            this.casAButton.Size = new System.Drawing.Size(75, 46);
             this.casAButton.TabIndex = 23;
             this.casAButton.Text = "Cas A";
             this.casAButton.UseVisualStyleBackColor = true;
@@ -165,18 +170,20 @@
             // 
             // treeViewBox
             // 
-            this.treeViewBox.Location = new System.Drawing.Point(738, 49);
+            this.treeViewBox.Location = new System.Drawing.Point(698, 61);
+            this.treeViewBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.treeViewBox.Name = "treeViewBox";
-            this.treeViewBox.Size = new System.Drawing.Size(218, 231);
+            this.treeViewBox.Size = new System.Drawing.Size(416, 431);
             this.treeViewBox.TabIndex = 24;
             // 
             // radioPosInit
             // 
             this.radioPosInit.AutoSize = true;
             this.radioPosInit.Checked = true;
-            this.radioPosInit.Location = new System.Drawing.Point(207, 341);
+            this.radioPosInit.Location = new System.Drawing.Point(233, 426);
+            this.radioPosInit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioPosInit.Name = "radioPosInit";
-            this.radioPosInit.Size = new System.Drawing.Size(123, 21);
+            this.radioPosInit.Size = new System.Drawing.Size(140, 24);
             this.radioPosInit.TabIndex = 25;
             this.radioPosInit.TabStop = true;
             this.radioPosInit.Text = "Position Initiale";
@@ -186,9 +193,10 @@
             // radioPosFinale
             // 
             this.radioPosFinale.AutoSize = true;
-            this.radioPosFinale.Location = new System.Drawing.Point(390, 341);
+            this.radioPosFinale.Location = new System.Drawing.Point(439, 426);
+            this.radioPosFinale.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioPosFinale.Name = "radioPosFinale";
-            this.radioPosFinale.Size = new System.Drawing.Size(121, 21);
+            this.radioPosFinale.Size = new System.Drawing.Size(137, 24);
             this.radioPosFinale.TabIndex = 26;
             this.radioPosFinale.Text = "Position Finale";
             this.radioPosFinale.UseVisualStyleBackColor = true;
@@ -196,9 +204,10 @@
             // 
             // reinitButton
             // 
-            this.reinitButton.Location = new System.Drawing.Point(315, 484);
+            this.reinitButton.Location = new System.Drawing.Point(354, 605);
+            this.reinitButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.reinitButton.Name = "reinitButton";
-            this.reinitButton.Size = new System.Drawing.Size(100, 36);
+            this.reinitButton.Size = new System.Drawing.Size(112, 45);
             this.reinitButton.TabIndex = 27;
             this.reinitButton.Text = "Réinitialiser";
             this.reinitButton.UseVisualStyleBackColor = true;
@@ -206,9 +215,9 @@
             // 
             // AffichageGraphique
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1041, 553);
+            this.ClientSize = new System.Drawing.Size(1171, 691);
             this.Controls.Add(this.reinitButton);
             this.Controls.Add(this.radioPosFinale);
             this.Controls.Add(this.radioPosInit);

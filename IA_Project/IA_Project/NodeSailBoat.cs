@@ -94,11 +94,7 @@ namespace IA_Project
 
         public override double CalculeHCost(double xArivee, double yArrivee)
         {
-            double cost = time_estimation(this.coorX, this.coorY, xArivee, yArrivee);
-            double costMax = 1;
-            double costMin = 1;
-
-            //cost = 2 * ((cost - costMax - costMin) / (costMax - costMin)) - 1;
+            double cost = Math.Sqrt((this.coorX - xArivee) * (this.coorX - xArivee) + (this.coorY - yArrivee) * (this.coorY - yArrivee));
             return (cost);
         }
 
