@@ -91,9 +91,13 @@ namespace IA_Project
             return dehors;
         }
 
-        public override double CalculeHCost() //Calcul de l'heuristique. Pour l'instant c'est toujours 0
+
+        public override double CalculeHCost(double xActuel, double yActuel, double xFinal, double yFinal)
         {
-            return (0);
+            double distance = Math.Sqrt((xActuel - xFinal) * (xActuel - xFinal) + (yActuel - yFinal) * (yActuel - yFinal));
+            Console.WriteLine(distance);
+            return (distance);
+            
         }
 
         //fonction qui calcule le temps de navigation entre 2 points proches (x1,y1) et (x2,y2)

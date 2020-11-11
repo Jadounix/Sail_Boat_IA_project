@@ -62,9 +62,9 @@ namespace IA_Project
             ParentNode = null;
         }
 
-        public void calculCoutTotal()
+        public void calculCoutTotal(double xActuel, double yActuel, double xFinal, double yFinal)
         {
-            HCost = CalculeHCost();
+            HCost = CalculeHCost(xActuel, yActuel, xFinal, yFinal);
             TotalCost = GCost + HCost;
         }
 
@@ -78,7 +78,7 @@ namespace IA_Project
         public abstract double GetArcCost(GenericNode N2);
         public abstract bool EndState();
         public abstract List<GenericNode> GetListSucc();
-        public abstract double CalculeHCost();
+        public abstract double CalculeHCost(double xActuel, double yActuel, double xFinal, double yFinal);
         // On peut aussi penser à surcharger ToString() pour afficher correctement un état
         // c'est utile pour l'affichage du treenode
     }
