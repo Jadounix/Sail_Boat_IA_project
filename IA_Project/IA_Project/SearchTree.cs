@@ -11,6 +11,14 @@ namespace IA_Project
     {
         public List<GenericNode> L_Ouverts;
         public List<GenericNode> L_Fermes;
+        public double Xdestination;
+        public double Ydestination;
+
+        public SearchTree(double X, double Y)
+        {
+            Xdestination = X;
+            Ydestination = Y;
+        }
 
         public int CountInOpenList()
         {
@@ -56,7 +64,7 @@ namespace IA_Project
             L_Ouverts.Add(N0);
 
             // tant que le noeud n'est pas terminal et que ouverts n'est pas vide
-            while (L_Ouverts.Count != 0 && N.EndState(3,3) == false)
+            while (L_Ouverts.Count != 0 && N.EndState(Xdestination, Ydestination) == false)
             {
                 // Le meilleur noeud des ouverts est supposé placé en tête de liste
                 // On le place dans les fermés
@@ -134,7 +142,7 @@ namespace IA_Project
                         // N2 est nouveau, MAJ et insertion dans les ouverts
                         N2.SetGCost(N.GetGCost() + N.GetArcCost(N2));
                         N2.SetNoeud_Parent(N);
-                        N2.calculCoutTotal(); // somme de GCost et HCost
+                        N2.calculCoutTotal(Xdestination,Ydestination); // somme de GCost et HCost
                         this.InsertNewNodeInOpenList(N2);
                     }
                 }

@@ -18,8 +18,15 @@ namespace IA_Project
             coorX = x; coorY = y;
             tailleMap = 300;
         }
-        
 
+        //Méthode ToString
+        public override string ToString()
+        {
+            string txt = "(" + coorX + "," + coorY + ")";
+            return txt;
+        }
+
+        //Méthode qui test l'égalité entre deux noeuds
         public override bool IsEqual(GenericNode noeud)
         {
             NodeSailBoat noeudBis = (NodeSailBoat)noeud;
@@ -31,13 +38,14 @@ namespace IA_Project
             return equal;
         }
 
+        //Méthode qui donne le cout d'un chemin entre deux deux noeuds
         public override double GetArcCost(GenericNode noeudDestination)
         {
             NodeSailBoat noeudSuivant = (NodeSailBoat)noeudDestination;
             return time_estimation(this.coorX, this.coorY, noeudSuivant.coorX, noeudSuivant.coorY);
         }
 
-        //adapter avec des valeurs dynamiques
+        //Méthode qui retourne vrai si le bateau est arrivé à sa destinatio et faux sinon
         public override bool EndState(double xArrivee, double yArrivee)
         {
             bool fini = false;
@@ -48,6 +56,7 @@ namespace IA_Project
             return fini;
         }
 
+        //Méthode qui donne la liste des successeurs 
         public override List<GenericNode> GetListSucc()
         {
             List<GenericNode> lsucc = new List<GenericNode>();
@@ -73,25 +82,39 @@ namespace IA_Project
             return lsucc;
         }
 
-
-        //a adapter avec val dynamiques
         public bool TestEnDehorsMap(double X, double Y)
         {
             bool dehors = false;
-            if(X>300 || X<0 || Y > 300 || Y < 0)
+            if(X>tailleMap || X<0 || Y > tailleMap || Y < 0)
             {
-                //je suis en dehors de la map
                 dehors = true;
             }
             return dehors;
         }
 
-
-        public override double CalculeHCost()
+        public override double CalculeHCost(double xArivee, double yArrivee)
         {
-           double cost = GetArcCost(this);
-           return (cost);
+            double cost = time_estimation(this.coorX, this.coorY, xArivee, yArrivee);
+            double costMax = 1;
+            double costMin = 1;
+
+            //cost = 2 * ((cost - costMax - costMin) / (costMax - costMin)) - 1;
+            return (cost);
         }
+
+        public override void calculCoutTotal(double xArivee, double yArrivee)
+        {
+            HCost = CalculeHCost(xArivee,yArrivee);
+            TotalCost = GCost + HCost;
+
+            Console.WriteLine("x=" + this.coorX + "y=" + this.coorY);
+            Console.WriteLine("G= " + GCost);
+            Console.WriteLine("H= " + HCost);
+            Console.WriteLine("Total = " + TotalCost);
+            Console.WriteLine();
+
+        }
+
 
         //fonction qui calcule le temps de navigation entre 2 points proches (x1,y1) et (x2,y2)
         public double time_estimation(double x1, double y1, double x2, double y2)
@@ -159,12 +182,6 @@ namespace IA_Project
             else if (y > 150)
                 return 170;
             else return 65;
-        }
-
-        public override string ToString()
-        {
-            string txt = "("+coorX+","+coorY+")";
-            return txt;
         }
     }
 }

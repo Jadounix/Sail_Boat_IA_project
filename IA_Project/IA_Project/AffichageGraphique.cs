@@ -106,7 +106,7 @@ namespace IA_Project
             NodeSailBoat node0 = new NodeSailBoat(xInit, yInit);
 
             //cree le searchTree
-            tree = new SearchTree();
+            tree = new SearchTree(xDest,yDest);
 
             // appeler RechecheA*
 
