@@ -37,19 +37,14 @@ namespace IA_Project
             return time_estimation(this.coorX, this.coorY, noeudSuivant.coorX, noeudSuivant.coorY);
         }
 
-
-
         //adapter avec des valeurs dynamiques
-        public override bool EndState()
+        public override bool EndState(double xArrivee, double yArrivee)
         {
             bool fini = false;
-            //cas 1 : point d'arrivée (5,5)
-            if(this.coorX == 5 && this.coorY == 5)
+            if(this.coorX == xArrivee && this.coorY == yArrivee)
             {
                 fini = true;
             }
-            //cas 2 : point d'arrivée (200,100)
-            //cas 3 : point d'arrivée (100,200)
             return fini;
         }
 
@@ -92,12 +87,10 @@ namespace IA_Project
         }
 
 
-        public override double CalculeHCost(double xActuel, double yActuel, double xFinal, double yFinal)
+        public override double CalculeHCost()
         {
-            double distance = Math.Sqrt((xActuel - xFinal) * (xActuel - xFinal) + (yActuel - yFinal) * (yActuel - yFinal));
-            Console.WriteLine(distance);
-            return (distance);
-            
+           double cost = GetArcCost(this);
+           return (cost);
         }
 
         //fonction qui calcule le temps de navigation entre 2 points proches (x1,y1) et (x2,y2)
@@ -167,7 +160,6 @@ namespace IA_Project
                 return 170;
             else return 65;
         }
-
 
         public override string ToString()
         {

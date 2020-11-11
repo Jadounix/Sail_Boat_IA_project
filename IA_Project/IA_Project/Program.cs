@@ -12,18 +12,10 @@ namespace IA_Project
         [STAThread]
         static void Main(string[] args)
         {
-           
-
-            /// <summary>
-            /// Point d'entrée principal de l'application.
-            /// </summary>
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AffichageGraphique());
-           
-        
-
+          
             Console.ReadKey();
         }
        

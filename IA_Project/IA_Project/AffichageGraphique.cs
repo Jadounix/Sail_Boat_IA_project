@@ -26,9 +26,9 @@ namespace IA_Project
                 {
                     xInit = 0;
                 }
-                else if (value>300)
+                else if (value> tailleMap)
                 {
-                    xInit = 300;
+                    xInit = tailleMap;
                 }
                 else xInit = value;
 
@@ -45,9 +45,9 @@ namespace IA_Project
                 {
                     yInit = 0;
                 }
-                else if (value > 300)
+                else if (value > tailleMap)
                 {
-                    yInit = 300;
+                    yInit = tailleMap;
                 }
                 else yInit = value;
             }
@@ -62,9 +62,9 @@ namespace IA_Project
                 {
                     xDest = 0;
                 }
-                else if (value > 300)
+                else if (value > tailleMap)
                 {
-                    xDest = 300;
+                    xDest = tailleMap;
                 }
                 else xDest = value;
             }
@@ -79,9 +79,9 @@ namespace IA_Project
                 {
                     yDest = 0;
                 }
-                else if (value > 300)
+                else if (value > tailleMap)
                 {
-                    yDest = 300;
+                    yDest = tailleMap;
                 }
                 else yDest = value;
             }
@@ -178,10 +178,7 @@ namespace IA_Project
             yDestBox.Text = valDefaut.ToString();
         }
 
-
-
-
-
+        
         // verifier si on garde listener sur textChanged : risque de changer la valeur au milieu de l'execution du code ? 
         //events lorsque le texte des textbox est modifié : 
 
@@ -235,10 +232,6 @@ namespace IA_Project
 
             Console.WriteLine("xinit" + xInit + "   yinit" + yInit);
         }
-
-
-
-
-
+        
     }
 }
