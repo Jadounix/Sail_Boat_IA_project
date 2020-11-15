@@ -16,13 +16,18 @@ namespace IA_Project
         public double Ydestination;
         public char cas;
         public PictureBox picture;
+        public Graphics graphic;
+        public Pen penWhite; 
 
         //Constructeur
-        public SearchTree(double X, double Y, char casEtudie)
+        public SearchTree(double X, double Y, char casEtudie, PictureBox pictureBox)
         {
             Xdestination = X;
             Ydestination = Y;
             cas = casEtudie;
+            picture = pictureBox;
+            graphic = picture.CreateGraphics();
+            penWhite = new Pen(Color.White);
         }
 
         public int CountInOpenList()
@@ -108,6 +113,9 @@ namespace IA_Project
                 }
                 
             }
+            Console.WriteLine("Dernier point");
+            NodeSailBoat NoeudFinal = (NodeSailBoat)_LN[_LN.Count()-1];
+            Console.WriteLine(NoeudFinal.coorX+" ; "+NoeudFinal.coorY);
             return _LN;
         }
 
@@ -153,7 +161,8 @@ namespace IA_Project
                         this.InsertNewNodeInOpenList(N2);
 
                         NodeSailBoat N2sail = (NodeSailBoat)N2;
-                        DessinerSegment(N2sail.coorX, N2sail.coorY, N2sail.coorX, N2sail.coorY);
+                        NodeSailBoat Nsail = (NodeSailBoat)N;
+                        DessinerSegment(Nsail.coorX, N2sail.coorX, Nsail.coorY, N2sail.coorY);
                     }
                 }
                 // else il est dans les fermés donc on ne fait rien,
@@ -204,6 +213,7 @@ namespace IA_Project
 
             TreeNode TN = new TreeNode(L_Fermes[0].ToString());
             TV.Nodes.Add(TN);
+            
 
             AjouteBranche(L_Fermes[0], TN);
         }
@@ -215,7 +225,10 @@ namespace IA_Project
             {
                 TreeNode TNfils = new TreeNode(GNfils.ToString());
                 TN.Nodes.Add(TNfils);
-                if (GNfils.GetEnfants().Count > 0) AjouteBranche(GNfils, TNfils);
+                if (GNfils.GetEnfants().Count > 0)
+                {
+                    AjouteBranche(GNfils, TNfils);
+                }
             }
         }
 
@@ -223,10 +236,10 @@ namespace IA_Project
         // soient x1, y1, x2, y2 des double utilisés pour définir les 2 extrémités d’un segment.
         private void DessinerSegment(double x1, double x2, double y1, double y2)
         {
-            Pen penwhite = new Pen(Color.White);
-            Graphics g = picture.CreateGraphics();
-            g.DrawLine(penwhite, new Point((int)x1, picture.Height - (int)y1),
-            new Point((int)x2, picture.Height - (int)y2));
+            //Pen penwhite = new Pen(Color.White);
+            //graphic = picture.CreateGraphics();
+            graphic.DrawLine(penWhite, new Point((int)x1,(int)y1),
+            new Point((int)x2,(int)y2));
         }
 
     }

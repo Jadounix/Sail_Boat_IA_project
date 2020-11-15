@@ -95,45 +95,52 @@ namespace IA_Project
         private void casAButton_Click(object sender, EventArgs e)
         {
             char cas = 'a';
-            xInit = 100; YInit = 200; xDest = 200; yDest = 100;
+            XInit = 100; YInit = 200; XDest = 200; YDest = 100;
 
             // déterminer le Node0
-            NodeSailBoat node0 = new NodeSailBoat(xInit, yInit);
+            NodeSailBoat node0 = new NodeSailBoat(XInit, YInit);
 
             //cree le searchTree
-            tree = new SearchTree(xDest,yDest,cas);
-            //Prend en paramètre l'image de fond
-            tree.picture = mapSeaBox;
+            tree = new SearchTree(XDest,YDest,cas,mapSeaBox);
 
             // appeler RechecheA*
             List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
             tree.GetSearchTree(treeViewBox);
+
+            //Affichage du chemin final en rouge
+            Pen penRed = new Pen(Color.Red);
+            Graphics g = mapSeaBox.CreateGraphics();
+            g.DrawLine(penRed, new Point((int)XInit,(int)YInit),
+            new Point((int)XDest,(int)YDest));
 
         }
 
         private void casBButton_Click(object sender, EventArgs e)
         {
             char cas = 'b';
-            xInit = 100; YInit = 200; xDest = 200; yDest = 100;
-            
-            NodeSailBoat node0 = new NodeSailBoat(xInit, yInit);
-            tree = new SearchTree(xDest, yDest,cas);
-            tree.picture = mapSeaBox;
+            XInit = 100; YInit = 200; XDest = 200; YDest = 100;
+
+            NodeSailBoat node0 = new NodeSailBoat(XInit, YInit);
+            tree = new SearchTree(XDest, YDest, cas, mapSeaBox);
 
             List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
 
             tree.GetSearchTree(treeViewBox);
 
+            //Affichage du chemin final en rouge
+            Pen penRed = new Pen(Color.Pink);
+            Graphics g = mapSeaBox.CreateGraphics();
+            g.DrawLine(penRed, new Point((int)XInit, (int)YInit),
+            new Point((int)XDest, (int)YDest));
         }
 
         private void casCButton_Click(object sender, EventArgs e)
         {
             char cas = 'c';
-            xInit = 200; YInit = 100; xDest = 100; yDest = 200;
+            XInit = 200; YInit = 100; XDest = 100; YDest = 200;
 
-            NodeSailBoat node0 = new NodeSailBoat(xInit, yInit);
-            tree = new SearchTree(xDest, yDest, cas);
-            tree.picture = mapSeaBox;
+            NodeSailBoat node0 = new NodeSailBoat(XInit, YInit);
+            tree = new SearchTree(XDest, YDest, cas, mapSeaBox);
 
             List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
 
@@ -230,7 +237,7 @@ namespace IA_Project
                 yDestBox.Text = y.ToString();
             }
 
-            Console.WriteLine("xinit" + xInit + "   yinit" + yInit);
+            Console.WriteLine("xinit" + XInit + "   yinit" + YInit);
         }
         
     }

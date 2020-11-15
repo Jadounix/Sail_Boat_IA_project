@@ -130,7 +130,6 @@ namespace IA_Project
                 }
             }
 
-
             //Calcul de l'heuristique
             double cost = distance / vitesseMax;
             return (cost);
