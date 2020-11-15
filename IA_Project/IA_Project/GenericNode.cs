@@ -62,9 +62,9 @@ namespace IA_Project
             ParentNode = null;
         }
 
-        public virtual void calculCoutTotal(double xArivee, double yArrivee)
+        public virtual void calculCoutTotal(double xArivee, double yArrivee, char cas)
         {
-            HCost = CalculeHCost(xArivee, yArrivee);
+            HCost = CalculeHCost(xArivee, yArrivee, cas);
             TotalCost = GCost + HCost;
 
             Console.WriteLine("G= " + GCost);
@@ -79,10 +79,10 @@ namespace IA_Project
 
         // Méthodes abstrates, donc à surcharger obligatoirement avec override dans une classe fille
         public abstract bool IsEqual(GenericNode N2);
-        public abstract double GetArcCost(GenericNode N2);
+        public abstract double GetArcCost(GenericNode N2, char cas);
         public abstract bool EndState(double xArrivee, double yArrivee);
         public abstract List<GenericNode> GetListSucc();
-        public abstract double CalculeHCost(double xArivee, double yArrivee);
+        public abstract double CalculeHCost(double xArivee, double yArrivee, char cas);
         // On peut aussi penser à surcharger ToString() pour afficher correctement un état
         // c'est utile pour l'affichage du treenode
     }

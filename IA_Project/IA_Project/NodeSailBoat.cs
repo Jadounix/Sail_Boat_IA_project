@@ -39,10 +39,10 @@ namespace IA_Project
         }
 
         //Méthode qui donne le cout d'un chemin entre deux deux noeuds
-        public override double GetArcCost(GenericNode noeudDestination)
+        public override double GetArcCost(GenericNode noeudDestination, char cas)
         {
             NodeSailBoat noeudSuivant = (NodeSailBoat)noeudDestination;
-            return time_estimation(this.coorX, this.coorY, noeudSuivant.coorX, noeudSuivant.coorY);
+            return time_estimation(this.coorX, this.coorY, noeudSuivant.coorX, noeudSuivant.coorY,cas);
         }
 
         //Méthode qui retourne vrai si le bateau est arrivé à sa destinatio et faux sinon
@@ -61,7 +61,6 @@ namespace IA_Project
         {
             List<GenericNode> lsucc = new List<GenericNode>();
 
-            //Pour l'instant pas de déplacement en diagonale
             //à chaque fois on teste si le noeud est en dehors de la map ou pas
             if(!TestEnDehorsMap(this.coorX + 1, this.coorY))
             {
@@ -79,46 +78,87 @@ namespace IA_Project
             {
                 lsucc.Add(new NodeSailBoat(this.coorX, this.coorY - 1));
             }
+            //Déplacements en diaonale
+            if (!TestEnDehorsMap(this.coorX + 1, this.coorY + 1)) 
+            {
+                lsucc.Add(new NodeSailBoat(this.coorX + 1, this.coorY + 1));
+            }
+            if (!TestEnDehorsMap(this.coorX + 1, this.coorY - 1))
+            {
+                lsucc.Add(new NodeSailBoat(this.coorX + 1, this.coorY - 1));
+            }
+            if (!TestEnDehorsMap(this.coorX - 1, this.coorY + 1))
+            {
+                lsucc.Add(new NodeSailBoat(this.coorX - 1, this.coorY + 1));
+            }
+            if (!TestEnDehorsMap(this.coorX - 1, this.coorY - 1))
+            {
+                lsucc.Add(new NodeSailBoat(this.coorX - 1, this.coorY - 1));
+            }
             return lsucc;
         }
 
         public bool TestEnDehorsMap(double X, double Y)
         {
             bool dehors = false;
-            if(X>tailleMap || X<0 || Y > tailleMap || Y < 0)
+            if (X > tailleMap || X < 0 || Y > tailleMap || Y < 0) 
             {
                 dehors = true;
             }
             return dehors;
         }
 
-        public override double CalculeHCost(double xArivee, double yArrivee)
+        public override double CalculeHCost(double xArivee, double yArrivee, char cas)
         {
-            double cost = Math.Sqrt((this.coorX - xArivee) * (this.coorX - xArivee) + (this.coorY - yArrivee) * (this.coorY - yArrivee));
+            //Calcul de la distance entre deux point
+            double distance = Math.Sqrt((this.coorX - xArivee) * (this.coorX - xArivee) + (this.coorY - yArrivee) * (this.coorY - yArrivee));
+            //Calcul de la vitesse max du bateau en fonction du cas et à un angle de 0°
+            double vitesseMax = 0.6+((0.3*45)/45);
+            if (cas == 'a')
+            {
+                vitesseMax *= 50;
+            }
+            else // cas b et c
+            {
+                if(this.coorY>150)
+                {
+                    vitesseMax *= 50;
+                }
+                else
+                {
+                    vitesseMax *= 20;
+                }
+            }
+
+
+            //Calcul de l'heuristique
+            double cost = distance / vitesseMax;
             return (cost);
         }
 
-        public override void calculCoutTotal(double xArivee, double yArrivee)
+        public override void calculCoutTotal(double xArivee, double yArrivee, char cas)
         {
-            HCost = CalculeHCost(xArivee,yArrivee);
+            HCost = CalculeHCost(xArivee,yArrivee,cas);
             TotalCost = GCost + HCost;
 
+            
             Console.WriteLine("x=" + this.coorX + "y=" + this.coorY);
             Console.WriteLine("G= " + GCost);
             Console.WriteLine("H= " + HCost);
             Console.WriteLine("Total = " + TotalCost);
             Console.WriteLine();
+            //Console.ReadKey();
 
         }
 
 
         //fonction qui calcule le temps de navigation entre 2 points proches (x1,y1) et (x2,y2)
-        public double time_estimation(double x1, double y1, double x2, double y2)
+        public double time_estimation(double x1, double y1, double x2, double y2, char cas)
         {
             double distance = Math.Sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
             if (distance > 10) return 1000000;
-            double windspeed = get_wind_speed((x1 + x2) / 2.0, (y1 + y2) / 2.0);
-            double winddirection = get_wind_direction((x1 + x2) / 2.0, (y1 + y2) / 2.0);
+            double windspeed = get_wind_speed((x1 + x2) / 2.0, ((y1 + y2) / 2.0),cas);
+            double winddirection = get_wind_direction((x1 + x2) / 2.0, ((y1 + y2) / 2.0),cas);
             double boatspeed;
             double boatdirection = Math.Atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
 
@@ -145,16 +185,14 @@ namespace IA_Project
                 /* v_b=0.7(1-(α-90)/60) v_v */
                 boatspeed = 0.7 * (1 - (alpha - 90) / 60) * windspeed;
             }
-            else
+            else 
                 return 1000000;
             // estimation du temps de navigation entre p1 et p2
             return (distance / boatspeed);
         }
 
         //fonctions pour la vitesse et la direction du vent
-        public char cas = 'a'; // à modifier en ‘b’ ou ‘c’ selon le choix de l’utilisateur
-        //faudra le mettre en paramètre
-        public double get_wind_speed(double x, double y)
+        public double get_wind_speed(double x, double y, char cas)
         {
             if (cas == 'a')
                 return 50;
@@ -167,7 +205,7 @@ namespace IA_Project
             else return 20;
         }
 
-        public double get_wind_direction(double x, double y)
+        public double get_wind_direction(double x, double y, char cas)
         {
             if (cas == 'a')
                 return 30;

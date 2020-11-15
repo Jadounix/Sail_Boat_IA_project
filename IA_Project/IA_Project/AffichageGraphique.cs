@@ -32,7 +32,6 @@ namespace IA_Project
                 }
                 else xInit = value;
 
-                //Console.WriteLine("xinit" + xInit);
             }
         }
         public double YInit { 
@@ -92,53 +91,54 @@ namespace IA_Project
             InitializeComponent();
         }
 
-        //listener des boutons : 
-
+       //Listeners des boutons
         private void casAButton_Click(object sender, EventArgs e)
         {
-            //on récupère la position initiale du bateau
-            // on récupère la position de la destination du bateau
-            // se fera par défaut dès que l'utilisateur va rentrer des valeurs
-
-            Console.WriteLine("xinit " + xInit + "\n yinit" + yInit);
+            char cas = 'a';
+            xInit = 100; YInit = 200; xDest = 200; yDest = 100;
 
             // déterminer le Node0
             NodeSailBoat node0 = new NodeSailBoat(xInit, yInit);
 
             //cree le searchTree
-            tree = new SearchTree(xDest,yDest);
+            tree = new SearchTree(xDest,yDest,cas);
+            //Prend en paramètre l'image de fond
+            tree.picture = mapSeaBox;
 
             // appeler RechecheA*
+            List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
+            tree.GetSearchTree(treeViewBox);
+
+        }
+
+        private void casBButton_Click(object sender, EventArgs e)
+        {
+            char cas = 'b';
+            xInit = 100; YInit = 200; xDest = 200; yDest = 100;
+            
+            NodeSailBoat node0 = new NodeSailBoat(xInit, yInit);
+            tree = new SearchTree(xDest, yDest,cas);
+            tree.picture = mapSeaBox;
 
             List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
 
             tree.GetSearchTree(treeViewBox);
 
-            // graphique (avoir un truc jouli
-            // point de départ en cliquant plutot qu'en saisissant des coordonnées
-            // avoir le chemin graphique (dessiner des segments)
-
-            //animer la trajectoire ?
-
-            //diagonales
-            // passer les valeurs en parametre et pas en dur
-
-            // heuristique 
-
-            //ergonomie mon amie
         }
 
-        //à coder
-        private void casBButton_Click(object sender, EventArgs e)
-        {
-
-        }
-        //à coder
         private void casCButton_Click(object sender, EventArgs e)
         {
+            char cas = 'c';
+            xInit = 200; YInit = 100; xDest = 100; yDest = 200;
 
+            NodeSailBoat node0 = new NodeSailBoat(xInit, yInit);
+            tree = new SearchTree(xDest, yDest, cas);
+            tree.picture = mapSeaBox;
+
+            List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
+
+            tree.GetSearchTree(treeViewBox);
         }
-
 
 
         //si on selectionne l'un des radio button : 

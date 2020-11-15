@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace IA_Project
 {
@@ -13,11 +14,15 @@ namespace IA_Project
         public List<GenericNode> L_Fermes;
         public double Xdestination;
         public double Ydestination;
+        public char cas;
+        public PictureBox picture;
 
-        public SearchTree(double X, double Y)
+        //Constructeur
+        public SearchTree(double X, double Y, char casEtudie)
         {
             Xdestination = X;
             Ydestination = Y;
+            cas = casEtudie;
         }
 
         public int CountInOpenList()
@@ -101,6 +106,7 @@ namespace IA_Project
                     N = N.GetNoeud_Parent();
                     _LN.Insert(0, N);  // On insère en position 1
                 }
+                
             }
             return _LN;
         }
@@ -122,10 +128,10 @@ namespace IA_Project
                     {
                         // Il existe, donc on l'a déjà vu, N2 n'est qu'une copie de N2Bis
                         // Le nouveau chemin passant par N est-il meilleur ?
-                        if (N.GetGCost() + N.GetArcCost(N2) < N2bis.GetGCost())
+                        if (N.GetGCost() + N.GetArcCost(N2,cas) < N2bis.GetGCost())
                         {
                             // Mise à jour de N2bis
-                            N2bis.SetGCost(N.GetGCost() + N.GetArcCost(N2));
+                            N2bis.SetGCost(N.GetGCost() + N.GetArcCost(N2,cas));
                             // HCost pas recalculé car toujours bon
                             N2bis.RecalculeCoutTotal(); // somme de GCost et HCost
                             // Mise à jour de la famille ....
@@ -140,10 +146,14 @@ namespace IA_Project
                     else
                     {
                         // N2 est nouveau, MAJ et insertion dans les ouverts
-                        N2.SetGCost(N.GetGCost() + N.GetArcCost(N2));
+                        
+                        N2.SetGCost(N.GetGCost() + N.GetArcCost(N2,cas));
                         N2.SetNoeud_Parent(N);
-                        N2.calculCoutTotal(Xdestination,Ydestination); // somme de GCost et HCost
+                        N2.calculCoutTotal(Xdestination,Ydestination,cas); // somme de GCost et HCost
                         this.InsertNewNodeInOpenList(N2);
+
+                        NodeSailBoat N2sail = (NodeSailBoat)N2;
+                        DessinerSegment(N2sail.coorX, N2sail.coorY, N2sail.coorX, N2sail.coorY);
                     }
                 }
                 // else il est dans les fermés donc on ne fait rien,
@@ -207,6 +217,16 @@ namespace IA_Project
                 TN.Nodes.Add(TNfils);
                 if (GNfils.GetEnfants().Count > 0) AjouteBranche(GNfils, TNfils);
             }
+        }
+
+        //Dessin du chemin
+        // soient x1, y1, x2, y2 des double utilisés pour définir les 2 extrémités d’un segment.
+        private void DessinerSegment(double x1, double x2, double y1, double y2)
+        {
+            Pen penwhite = new Pen(Color.White);
+            Graphics g = picture.CreateGraphics();
+            g.DrawLine(penwhite, new Point((int)x1, picture.Height - (int)y1),
+            new Point((int)x2, picture.Height - (int)y2));
         }
 
     }
