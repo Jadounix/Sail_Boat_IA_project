@@ -108,11 +108,8 @@ namespace IA_Project
             tree.GetSearchTree(treeViewBox);
 
             //Affichage du chemin final en rouge
-            Pen penRed = new Pen(Color.Red);
-            Graphics g = mapSeaBox.CreateGraphics();
-            g.DrawLine(penRed, new Point((int)XInit,(int)YInit),
-            new Point((int)XDest,(int)YDest));
-
+            DessinCheminFinal(mapSeaBox.CreateGraphics(), XInit, YInit, XDest, YDest);
+           
         }
 
         private void casBButton_Click(object sender, EventArgs e)
@@ -128,10 +125,7 @@ namespace IA_Project
             tree.GetSearchTree(treeViewBox);
 
             //Affichage du chemin final en rouge
-            Pen penRed = new Pen(Color.Pink);
-            Graphics g = mapSeaBox.CreateGraphics();
-            g.DrawLine(penRed, new Point((int)XInit, (int)YInit),
-            new Point((int)XDest, (int)YDest));
+            DessinCheminFinal(mapSeaBox.CreateGraphics(), XInit, YInit, XDest, YDest);
         }
 
         private void casCButton_Click(object sender, EventArgs e)
@@ -145,6 +139,8 @@ namespace IA_Project
             List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
 
             tree.GetSearchTree(treeViewBox);
+            //Affichage du chemin final en rouge
+            DessinCheminFinal(mapSeaBox.CreateGraphics(), XInit, YInit, XDest, YDest);
         }
 
 
@@ -238,6 +234,15 @@ namespace IA_Project
             }
 
             Console.WriteLine("xinit" + XInit + "   yinit" + YInit);
+        }
+
+        //Affichage du chemin final en rouge
+        private void DessinCheminFinal(Graphics g, double xI, double yI, double xD, double yD)
+        {
+            Pen penRed = new Pen(Color.Red);
+            g = mapSeaBox.CreateGraphics();
+            g.DrawLine(penRed, new Point((int)xI, (int)yI),
+            new Point((int)xD, (int)yD));
         }
         
     }

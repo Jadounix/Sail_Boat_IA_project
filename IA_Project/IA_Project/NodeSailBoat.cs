@@ -120,14 +120,31 @@ namespace IA_Project
             }
             else // cas b et c
             {
-                if(this.coorY>150)
+                if(cas=='b')
                 {
-                    vitesseMax *= 50;
+                    if (this.coorY > 150)
+                    {
+                        //vitesseMax *= 3;
+                        //vitesseMax = 1;
+                    }
+                    else
+                    {
+                        //vitesseMax *= 20;
+                        vitesseMax = 1;
+                    }
                 }
-                else
+                else //cas c
                 {
-                    vitesseMax *= 20;
+                    if (this.coorY > 150)
+                    {
+                        vitesseMax *= 50;
+                    }
+                    else
+                    {
+                        vitesseMax *= 20;
+                    }
                 }
+                
             }
 
             //Calcul de l'heuristique
@@ -139,15 +156,6 @@ namespace IA_Project
         {
             HCost = CalculeHCost(xArivee,yArrivee,cas);
             TotalCost = GCost + HCost;
-
-            
-            Console.WriteLine("x=" + this.coorX + "y=" + this.coorY);
-            Console.WriteLine("G= " + GCost);
-            Console.WriteLine("H= " + HCost);
-            Console.WriteLine("Total = " + TotalCost);
-            Console.WriteLine();
-            //Console.ReadKey();
-
         }
 
 
