@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
+
 
 namespace IA_Project
 {
@@ -67,6 +69,9 @@ namespace IA_Project
 
         public List<GenericNode> RechercheSolutionAEtoile(GenericNode N0)
         {
+            //Démarrage du chrono pour calculer le temps que met l'algo à trouver la solution
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             L_Ouverts = new List<GenericNode>();
             L_Fermes = new List<GenericNode>();
             // Le noeud passé en paramètre est supposé être le noeud initial
@@ -97,6 +102,11 @@ namespace IA_Project
                 }
             }
 
+            //Fin du chrono et affichage dans la console
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds);
+            Console.WriteLine("Temps de navigation " + elapsedTime);
             // A* terminé
             // On retourne le chemin qui va du noeud initial au noeud final sous forme de liste
             // Le chemin est retrouvé en partant du noeud final et en accédant aux parents de manière
@@ -113,9 +123,10 @@ namespace IA_Project
                 }
                 
             }
-            Console.WriteLine("Dernier point");
             NodeSailBoat NoeudFinal = (NodeSailBoat)_LN[_LN.Count()-1];
-            Console.WriteLine(NoeudFinal.coorX+" ; "+NoeudFinal.coorY);
+            Console.WriteLine("Nombre de noeuds du chemin solution");
+            Console.WriteLine("Somme des noeuds des listes Ouverts et Fermés : " + (L_Ouverts.Count()+ L_Fermes.Count()));
+
             return _LN;
         }
 

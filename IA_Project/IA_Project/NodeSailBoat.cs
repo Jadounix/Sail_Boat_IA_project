@@ -124,13 +124,11 @@ namespace IA_Project
                 {
                     if (this.coorY > 150)
                     {
-                        //vitesseMax *= 3;
-                        //vitesseMax = 1;
+                        vitesseMax = 1; //Vitesse du bateau nul pour un angle de 180
                     }
                     else
                     {
-                        //vitesseMax *= 20;
-                        vitesseMax = 1;
+                        vitesseMax = (0.9 - (0.2*45/ 45)) * 35; 
                     }
                 }
                 else //cas c

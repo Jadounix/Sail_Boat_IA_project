@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -126,6 +127,7 @@ namespace IA_Project
 
             //Affichage du chemin final en rouge
             DessinCheminFinal(mapSeaBox.CreateGraphics(), XInit, YInit, XDest, YDest);
+
         }
 
         private void casCButton_Click(object sender, EventArgs e)
@@ -171,7 +173,7 @@ namespace IA_Project
             yDestBox.Enabled = true;
         }
 
-        //reinitilise les positions de depart et d'arrivee
+        //reinitilise les positions de depart et d'arrivee et l'image de fond
         private void reinitButton_Click(object sender, EventArgs e)
         {
             double valDefaut = 0;
@@ -179,9 +181,11 @@ namespace IA_Project
             yInitBox.Text = valDefaut.ToString();
             xDestBox.Text = valDefaut.ToString();
             yDestBox.Text = valDefaut.ToString();
+            mapSeaBox.Image = Image.FromFile("sea.jpg");
+
         }
 
-        
+
         // verifier si on garde listener sur textChanged : risque de changer la valeur au milieu de l'execution du code ? 
         //events lorsque le texte des textbox est modifié : 
 
@@ -204,6 +208,8 @@ namespace IA_Project
         {
             YDest = Convert.ToDouble(yDestBox.Text);
         }
+
+       
 
 
         //sur la PictureBox : point en haut à gauche à (0,0)
@@ -232,11 +238,9 @@ namespace IA_Project
                 xDestBox.Text = x.ToString();
                 yDestBox.Text = y.ToString();
             }
-
-            Console.WriteLine("xinit" + XInit + "   yinit" + YInit);
         }
 
-        //Affichage du chemin final en rouge
+        //Affichage du chemin "à vol d'oiseau" en rouge
         private void DessinCheminFinal(Graphics g, double xI, double yI, double xD, double yD)
         {
             Pen penRed = new Pen(Color.Red);
@@ -245,5 +249,6 @@ namespace IA_Project
             new Point((int)xD, (int)yD));
         }
         
+
     }
 }
