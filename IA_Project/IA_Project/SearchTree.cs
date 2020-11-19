@@ -124,6 +124,18 @@ namespace IA_Project
                 
             }
             NodeSailBoat NoeudFinal = (NodeSailBoat)_LN[_LN.Count()-1];
+            NodeSailBoat NoeudDeDepart = (NodeSailBoat)N0;
+            NodeSailBoat NoeudEnCours = NoeudFinal;
+
+            while (NoeudEnCours.coorX != NoeudDeDepart.coorX && NoeudEnCours.coorY != NoeudDeDepart.coorY)
+            {
+                NodeSailBoat NoeudParent = (NodeSailBoat)NoeudEnCours.GetNoeud_Parent();
+                Console.WriteLine("ici");
+                DessinerSegment(NoeudParent.coorX, NoeudEnCours.coorX, NoeudParent.coorY, NoeudEnCours.coorY, new Pen(Color.Blue));
+                NoeudEnCours = NoeudParent;
+            }
+
+
             Console.WriteLine("Nombre de noeuds du chemin solution");
             Console.WriteLine("Somme des noeuds des listes Ouverts et Fermés : " + (L_Ouverts.Count()+ L_Fermes.Count()));
 
@@ -173,7 +185,7 @@ namespace IA_Project
 
                         NodeSailBoat N2sail = (NodeSailBoat)N2;
                         NodeSailBoat Nsail = (NodeSailBoat)N;
-                        DessinerSegment(Nsail.coorX, N2sail.coorX, Nsail.coorY, N2sail.coorY);
+                        DessinerSegment(Nsail.coorX, N2sail.coorX, Nsail.coorY, N2sail.coorY, this.penWhite);
                     }
                 }
                 // else il est dans les fermés donc on ne fait rien,
@@ -245,11 +257,9 @@ namespace IA_Project
 
         //Dessin du chemin
         // soient x1, y1, x2, y2 des double utilisés pour définir les 2 extrémités d’un segment.
-        private void DessinerSegment(double x1, double x2, double y1, double y2)
+        private void DessinerSegment(double x1, double x2, double y1, double y2, Pen pen)
         {
-            //Pen penwhite = new Pen(Color.White);
-            //graphic = picture.CreateGraphics();
-            graphic.DrawLine(penWhite, new Point((int)x1,(int)y1),
+            graphic.DrawLine(pen, new Point((int)x1,(int)y1),
             new Point((int)x2,(int)y2));
         }
 

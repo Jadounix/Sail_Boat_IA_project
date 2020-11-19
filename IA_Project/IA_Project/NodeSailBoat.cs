@@ -110,10 +110,14 @@ namespace IA_Project
 
         public override double CalculeHCost(double xArivee, double yArrivee, char cas)
         {
+            
+
             //Calcul de la distance entre deux point
             double distance = Math.Sqrt((this.coorX - xArivee) * (this.coorX - xArivee) + (this.coorY - yArrivee) * (this.coorY - yArrivee));
-            //Calcul de la vitesse max du bateau en fonction du cas et à un angle de 0°
-            double vitesseMax = 0.6+((0.3*45)/45);
+            //Calcul de la vitesse max du bateau en fonction du cas et à un angle de 45°
+            double vitesseMax = 0.9; //maximum dela fonction vitesse du bateau, à multiplier par la vitesse du vent
+
+          
             if (cas == 'a')
             {
                 vitesseMax *= 50;
@@ -124,11 +128,13 @@ namespace IA_Project
                 {
                     if (this.coorY > 150)
                     {
-                        vitesseMax = 1; //Vitesse du bateau nul pour un angle de 180
+                        //vitesseMax = 0; //Vitesse du bateau nul pour un angle de 180
+                        vitesseMax *= 50;
                     }
                     else
                     {
-                        vitesseMax = (0.9 - (0.2*45/ 45)) * 35; 
+                        //vitesseMax = (0.9 - (0.2*45/ 45)) * 35; 
+                        vitesseMax *= 20;
                     }
                 }
                 else //cas c
@@ -144,9 +150,14 @@ namespace IA_Project
                 }
                 
             }
+            double cost = distance / vitesseMax;
+
+            if (distance>100) //pénalité de distance pour le forcer lol
+            {
+                cost = 100000000;
+            }
 
             //Calcul de l'heuristique
-            double cost = distance / vitesseMax;
             return (cost);
         }
 

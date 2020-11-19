@@ -109,7 +109,7 @@ namespace IA_Project
             tree.GetSearchTree(treeViewBox);
 
             //Affichage du chemin final en rouge
-            DessinCheminFinal(mapSeaBox.CreateGraphics(), XInit, YInit, XDest, YDest);
+            //DessinCheminFinal(mapSeaBox.CreateGraphics(), XInit, YInit, XDest, YDest);
            
         }
 
@@ -126,7 +126,7 @@ namespace IA_Project
             tree.GetSearchTree(treeViewBox);
 
             //Affichage du chemin final en rouge
-            DessinCheminFinal(mapSeaBox.CreateGraphics(), XInit, YInit, XDest, YDest);
+            //DessinCheminFinal(mapSeaBox.CreateGraphics(), XInit, YInit, XDest, YDest);
 
         }
 
@@ -142,7 +142,7 @@ namespace IA_Project
 
             tree.GetSearchTree(treeViewBox);
             //Affichage du chemin final en rouge
-            DessinCheminFinal(mapSeaBox.CreateGraphics(), XInit, YInit, XDest, YDest);
+            //DessinCheminFinal(mapSeaBox.CreateGraphics(), XInit, YInit, XDest, YDest);
         }
 
 
