@@ -17,12 +17,12 @@ namespace IA_Project
         private double xInit, yInit, xDest, yDest;
         static double tailleMap = 300;
 
+
+        //A faire : edit un label pour dire qu'il y a une erreur
         public double XInit { 
             get => xInit;
             set
             {
-                //a penser
-                //edit un label pour dire qu'il y a une erreur
                 if(value<0)
                 {
                     xInit = 0;
@@ -39,8 +39,6 @@ namespace IA_Project
             get => yInit;
             set
             {
-                //a penser
-                //edit un label pour dire qu'il y a une erreur
                 if (value < 0)
                 {
                     yInit = 0;
@@ -56,8 +54,6 @@ namespace IA_Project
             get => xDest;
             set
             {
-                //a penser
-                //edit un label pour dire qu'il y a une erreur
                 if (value < 0)
                 {
                     xDest = 0;
@@ -73,8 +69,6 @@ namespace IA_Project
             get => yDest; 
             set
             {
-                //a penser
-                //edit un label pour dire qu'il y a une erreur
                 if (value < 0)
                 {
                     yDest = 0;
@@ -107,10 +101,6 @@ namespace IA_Project
             // appeler RechecheA*
             List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
             tree.GetSearchTree(treeViewBox);
-
-            //Affichage du chemin final en rouge
-            //DessinCheminFinal(mapSeaBox.CreateGraphics(), XInit, YInit, XDest, YDest);
-           
         }
 
         private void casBButton_Click(object sender, EventArgs e)
@@ -124,10 +114,6 @@ namespace IA_Project
             List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
 
             tree.GetSearchTree(treeViewBox);
-
-            //Affichage du chemin final en rouge
-            //DessinCheminFinal(mapSeaBox.CreateGraphics(), XInit, YInit, XDest, YDest);
-
         }
 
         private void casCButton_Click(object sender, EventArgs e)
@@ -141,15 +127,10 @@ namespace IA_Project
             List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
 
             tree.GetSearchTree(treeViewBox);
-            //Affichage du chemin final en rouge
-            //DessinCheminFinal(mapSeaBox.CreateGraphics(), XInit, YInit, XDest, YDest);
         }
 
 
-        //si on selectionne l'un des radio button : 
-        // enable les textbox associés, disable les autres
-        // textbox affichent avec les coodonnées de l'image au click
-        // textbox vont update les variables associées
+        //si on selectionne l'un des radio button on peut écrire dans les textbox associés, pas dans les autres
         private void radioPosInit_CheckedChanged(object sender, EventArgs e)
         {
             //on change les paramètres des textBox de la destination pour rendre impossible la modification des valeurs
@@ -182,7 +163,6 @@ namespace IA_Project
             xDestBox.Text = valDefaut.ToString();
             yDestBox.Text = valDefaut.ToString();
             mapSeaBox.Image = Image.FromFile("sea.jpg");
-
         }
 
 
@@ -209,12 +189,6 @@ namespace IA_Project
             YDest = Convert.ToDouble(yDestBox.Text);
         }
 
-       
-
-
-        //sur la PictureBox : point en haut à gauche à (0,0)
-        //point en bas à gauche : (0,300)
-
         //permet d'obtenir les coordonnées du point cliqué sur la map
         private void mapSeaBox_Click(object sender, EventArgs e)
         {
@@ -223,32 +197,20 @@ namespace IA_Project
             x = me.X;
             y = me.Y;
 
-            //si position initiale selectionné
-            //on change les valeurs des textBox de la position initiale
+            //si position initiale selectionné on change les valeurs des textBox de la position initiale
             if(radioPosInit.Checked)
             {
                 xInitBox.Text = x.ToString();
                 yInitBox.Text = y.ToString();
 
             }
-            //si position finale selectionné
-            //on change les valeurs des textBox de la position finale
+            //si position finale selectionné on change les valeurs des textBox de la position finale
             else
             {
                 xDestBox.Text = x.ToString();
                 yDestBox.Text = y.ToString();
             }
-        }
-
-        //Affichage du chemin "à vol d'oiseau" en rouge
-        private void DessinCheminFinal(Graphics g, double xI, double yI, double xD, double yD)
-        {
-            Pen penRed = new Pen(Color.Red);
-            g = mapSeaBox.CreateGraphics();
-            g.DrawLine(penRed, new Point((int)xI, (int)yI),
-            new Point((int)xD, (int)yD));
-        }
-        
+        } 
 
     }
 }

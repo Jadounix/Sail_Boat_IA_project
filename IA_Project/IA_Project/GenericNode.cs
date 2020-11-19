@@ -66,10 +66,6 @@ namespace IA_Project
         {
             HCost = CalculeHCost(xArivee, yArrivee, cas);
             TotalCost = GCost + HCost;
-
-            Console.WriteLine("G= " + GCost);
-            Console.WriteLine("H= " + HCost);
-            Console.WriteLine("Total = " + TotalCost);
         }
 
         public void RecalculeCoutTotal()

@@ -16,7 +16,8 @@ namespace IA_Project
         public List<GenericNode> L_Fermes;
         public double Xdestination;
         public double Ydestination;
-        public char cas;
+        public char cas; //cas a b ou c en fonction du choix de l'utilisateur
+        //Attributs servants à l'affichage graphique
         public PictureBox picture;
         public Graphics graphic;
         public Pen penWhite; 
@@ -69,9 +70,10 @@ namespace IA_Project
 
         public List<GenericNode> RechercheSolutionAEtoile(GenericNode N0)
         {
-            //Démarrage du chrono pour calculer le temps que met l'algo à trouver la solution
+            //Démarrage du chrono pour calculer le temps que met l'algorithme à trouver la solution
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
+
             L_Ouverts = new List<GenericNode>();
             L_Fermes = new List<GenericNode>();
             // Le noeud passé en paramètre est supposé être le noeud initial
@@ -107,6 +109,7 @@ namespace IA_Project
             TimeSpan ts = stopWatch.Elapsed;
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds);
             Console.WriteLine("Temps de navigation " + elapsedTime);
+
             // A* terminé
             // On retourne le chemin qui va du noeud initial au noeud final sous forme de liste
             // Le chemin est retrouvé en partant du noeud final et en accédant aux parents de manière
@@ -123,20 +126,24 @@ namespace IA_Project
                 }
                 
             }
+            //On veut tracer le chemin final trouvé par l'algorithme comme étant le meilleur
+            //Pour cela on part du noeud final et on trace un segment en lui et son parent et ainsi de suite
             NodeSailBoat NoeudFinal = (NodeSailBoat)_LN[_LN.Count()-1];
             NodeSailBoat NoeudDeDepart = (NodeSailBoat)N0;
             NodeSailBoat NoeudEnCours = NoeudFinal;
-
+            //On met égalament un compteur pour connaitre le nombre de noeud de la solution
+            int cptNoeuds = 0;
+            //Tant qu'on n'est pas arrivé noeud initial on continu de chercher le noeud parent et de tracer des segments
             while (NoeudEnCours.coorX != NoeudDeDepart.coorX && NoeudEnCours.coorY != NoeudDeDepart.coorY)
             {
                 NodeSailBoat NoeudParent = (NodeSailBoat)NoeudEnCours.GetNoeud_Parent();
-                Console.WriteLine("ici");
                 DessinerSegment(NoeudParent.coorX, NoeudEnCours.coorX, NoeudParent.coorY, NoeudEnCours.coorY, new Pen(Color.Blue));
-                NoeudEnCours = NoeudParent;
+                NoeudEnCours = NoeudParent; //Le noeud en cours devient le noeud parent afin de continuer la recherche
+                cptNoeuds++;
             }
 
-
-            Console.WriteLine("Nombre de noeuds du chemin solution");
+            //Affichage dans la console des différentes caratéristiques du chemin trouvé
+            Console.WriteLine("Nombre de noeuds du chemin solution : " + cptNoeuds);
             Console.WriteLine("Somme des noeuds des listes Ouverts et Fermés : " + (L_Ouverts.Count()+ L_Fermes.Count()));
 
             return _LN;
@@ -183,6 +190,7 @@ namespace IA_Project
                         N2.calculCoutTotal(Xdestination,Ydestination,cas); // somme de GCost et HCost
                         this.InsertNewNodeInOpenList(N2);
 
+                        //Affichage en blanc de la recherche de l'algorithme en traçant des segments entre le noeud en cours et le suivant
                         NodeSailBoat N2sail = (NodeSailBoat)N2;
                         NodeSailBoat Nsail = (NodeSailBoat)N;
                         DessinerSegment(Nsail.coorX, N2sail.coorX, Nsail.coorY, N2sail.coorY, this.penWhite);

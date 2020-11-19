@@ -152,10 +152,10 @@ namespace IA_Project
             }
             double cost = distance / vitesseMax;
 
-            if (distance>100) //pénalité de distance pour le forcer lol
+            /*if (distance>100) //pénalité de distance pour le forcer lol
             {
                 cost = 100000000;
-            }
+            }*/
 
             //Calcul de l'heuristique
             return (cost);
