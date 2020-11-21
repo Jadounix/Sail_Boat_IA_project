@@ -20,7 +20,8 @@ namespace IA_Project
         //Attributs servants à l'affichage graphique
         public PictureBox picture;
         public Graphics graphic;
-        public Pen penWhite; 
+        public Pen penWhite;
+        public int cptNoeuds, sommeNoeuds;
 
         //Constructeur
         public SearchTree(double X, double Y, char casEtudie, PictureBox pictureBox)
@@ -31,6 +32,8 @@ namespace IA_Project
             picture = pictureBox;
             graphic = picture.CreateGraphics();
             penWhite = new Pen(Color.White);
+            cptNoeuds = 0;
+            sommeNoeuds = 0;
         }
 
         public int CountInOpenList()
@@ -132,7 +135,7 @@ namespace IA_Project
             NodeSailBoat NoeudDeDepart = (NodeSailBoat)N0;
             NodeSailBoat NoeudEnCours = NoeudFinal;
             //On met égalament un compteur pour connaitre le nombre de noeud de la solution
-            int cptNoeuds = 0;
+            cptNoeuds = 0;
             //Tant qu'on n'est pas arrivé noeud initial on continu de chercher le noeud parent et de tracer des segments
             while (NoeudEnCours.coorX != NoeudDeDepart.coorX && NoeudEnCours.coorY != NoeudDeDepart.coorY)
             {
@@ -144,6 +147,7 @@ namespace IA_Project
 
             //Affichage dans la console des différentes caratéristiques du chemin trouvé
             Console.WriteLine("Nombre de noeuds du chemin solution : " + cptNoeuds);
+            sommeNoeuds = L_Ouverts.Count() + L_Fermes.Count();
             Console.WriteLine("Somme des noeuds des listes Ouverts et Fermés : " + (L_Ouverts.Count()+ L_Fermes.Count()));
 
             return _LN;

@@ -98,9 +98,15 @@ namespace IA_Project
             //cree le searchTree
             tree = new SearchTree(XDest,YDest,cas,mapSeaBox);
 
-            // appeler RechecheA*
+            // appeler RechecheA et afficher la solution*
             List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
             tree.GetSearchTree(treeViewBox);
+
+            //Remplir les champs avec les infos de l'arbre : 
+            txtNbNoeuds.Text = tree.cptNoeuds.ToString();
+            txtSommeNoeuds.Text = tree.sommeNoeuds.ToString();
+            
+            //faire pour temps de navigation 
         }
 
         private void casBButton_Click(object sender, EventArgs e)
