@@ -62,9 +62,9 @@ namespace IA_Project
             ParentNode = null;
         }
 
-        public virtual void calculCoutTotal(double xArivee, double yArrivee, char cas)
+        public virtual void calculCoutTotal(double xArivee, double yArrivee, char cas, double distancePoint)
         {
-            HCost = CalculeHCost(xArivee, yArrivee, cas);
+            HCost = CalculeHCost(xArivee, yArrivee, cas, distancePoint);
             TotalCost = GCost + HCost;
         }
 
@@ -78,7 +78,7 @@ namespace IA_Project
         public abstract double GetArcCost(GenericNode N2, char cas);
         public abstract bool EndState(double xArrivee, double yArrivee);
         public abstract List<GenericNode> GetListSucc();
-        public abstract double CalculeHCost(double xArivee, double yArrivee, char cas);
+        public abstract double CalculeHCost(double xArivee, double yArrivee, char cas, double distancePoint);
         // On peut aussi penser à surcharger ToString() pour afficher correctement un état
         // c'est utile pour l'affichage du treenode
     }

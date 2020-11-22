@@ -108,62 +108,28 @@ namespace IA_Project
             return dehors;
         }
 
-        public override double CalculeHCost(double xArivee, double yArrivee, char cas)
+        public override double CalculeHCost(double xArivee, double yArrivee, char cas, double distancePoint)
         {
-            
-
-            //Calcul de la distance entre deux point
+            //Calcul de la distance entre deux points
+            double cost = 0;
             double distance = Math.Sqrt((this.coorX - xArivee) * (this.coorX - xArivee) + (this.coorY - yArrivee) * (this.coorY - yArrivee));
             //Calcul de la vitesse max du bateau en fonction du cas et à un angle de 45°
-            double vitesseMax = 0.9; //maximum dela fonction vitesse du bateau, à multiplier par la vitesse du vent
+            double vitesseMax = 0.9*50; //maximum dela fonction vitesse du bateau, à multiplier par la vitesse du vent
 
-          
-            if (cas == 'a')
+            if (distance > distancePoint)
             {
-                vitesseMax *= 50;
+                cost = 10000000;
             }
-            else // cas b et c
+            else
             {
-                if(cas=='b')
-                {
-                    if (this.coorY > 150)
-                    {
-                        //vitesseMax = 0; //Vitesse du bateau nul pour un angle de 180
-                        vitesseMax *= 50;
-                    }
-                    else
-                    {
-                        //vitesseMax = (0.9 - (0.2*45/ 45)) * 35; 
-                        vitesseMax *= 20;
-                    }
-                }
-                else //cas c
-                {
-                    if (this.coorY > 150)
-                    {
-                        vitesseMax *= 50;
-                    }
-                    else
-                    {
-                        vitesseMax *= 20;
-                    }
-                }
-                
+                cost = distance / vitesseMax;
             }
-            double cost = distance / vitesseMax;
-
-            /*if (distance>100) //pénalité de distance pour le forcer lol
-            {
-                cost = 100000000;
-            }*/
-
-            //Calcul de l'heuristique
             return (cost);
         }
 
-        public override void calculCoutTotal(double xArivee, double yArrivee, char cas)
+        public override void calculCoutTotal(double xArivee, double yArrivee, char cas,double distancePoint)
         {
-            HCost = CalculeHCost(xArivee,yArrivee,cas);
+            HCost = CalculeHCost(xArivee,yArrivee,cas, distancePoint);
             TotalCost = GCost + HCost;
         }
 

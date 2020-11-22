@@ -101,12 +101,8 @@ namespace IA_Project
             // appeler RechecheA et afficher la solution*
             List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
             tree.GetSearchTree(treeViewBox);
+            AffichageResultats(tree);
 
-            //Remplir les champs avec les infos de l'arbre : 
-            txtNbNoeuds.Text = tree.cptNoeuds.ToString();
-            txtSommeNoeuds.Text = tree.sommeNoeuds.ToString();
-            
-            //faire pour temps de navigation 
         }
 
         private void casBButton_Click(object sender, EventArgs e)
@@ -120,6 +116,8 @@ namespace IA_Project
             List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
 
             tree.GetSearchTree(treeViewBox);
+            AffichageResultats(tree);
+
         }
 
         private void casCButton_Click(object sender, EventArgs e)
@@ -133,6 +131,8 @@ namespace IA_Project
             List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
 
             tree.GetSearchTree(treeViewBox);
+            AffichageResultats(tree);
+
         }
 
 
@@ -169,6 +169,10 @@ namespace IA_Project
             xDestBox.Text = valDefaut.ToString();
             yDestBox.Text = valDefaut.ToString();
             mapSeaBox.Image = Image.FromFile("sea.jpg");
+            txtTempsNav.Text = "";
+            txtTempsCalcul.Text = "";
+            txtSommeNoeuds.Text = "";
+            txtNbNoeuds.Text = "";
         }
 
 
@@ -184,6 +188,8 @@ namespace IA_Project
         {
             YInit = Convert.ToDouble(yInitBox.Text);
         }
+
+
 
         private void xDestBox_TextChanged(object sender, EventArgs e)
         {
@@ -217,6 +223,14 @@ namespace IA_Project
                 yDestBox.Text = y.ToString();
             }
         } 
+
+        private void AffichageResultats(SearchTree tree)
+        {
+            txtNbNoeuds.Text = tree.cptNoeuds.ToString();
+            txtSommeNoeuds.Text = tree.sommeNoeuds.ToString();
+            txtTempsCalcul.Text = tree.tempsCalcul;
+            txtTempsNav.Text = tree.tempsNavigation.ToString() + " heure(s)";
+        }
 
     }
 }

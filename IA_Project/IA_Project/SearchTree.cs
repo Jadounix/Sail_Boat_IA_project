@@ -22,6 +22,9 @@ namespace IA_Project
         public Graphics graphic;
         public Pen penWhite;
         public int cptNoeuds, sommeNoeuds;
+        public string tempsCalcul;
+        public double tempsNavigation;
+        
 
         //Constructeur
         public SearchTree(double X, double Y, char casEtudie, PictureBox pictureBox)
@@ -34,6 +37,8 @@ namespace IA_Project
             penWhite = new Pen(Color.White);
             cptNoeuds = 0;
             sommeNoeuds = 0;
+            tempsCalcul = " ";
+            tempsNavigation = 0;
         }
 
         public int CountInOpenList()
@@ -107,11 +112,10 @@ namespace IA_Project
                 }
             }
 
-            //Fin du chrono et affichage dans la console
+            //Fin du chrono et récupération de la valeur
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds);
-            Console.WriteLine("Temps de navigation " + elapsedTime);
+            tempsCalcul = String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds);
 
             // A* terminé
             // On retourne le chemin qui va du noeud initial au noeud final sous forme de liste
@@ -141,14 +145,14 @@ namespace IA_Project
             {
                 NodeSailBoat NoeudParent = (NodeSailBoat)NoeudEnCours.GetNoeud_Parent();
                 DessinerSegment(NoeudParent.coorX, NoeudEnCours.coorX, NoeudParent.coorY, NoeudEnCours.coorY, new Pen(Color.Blue));
+                tempsNavigation += NoeudEnCours.time_estimation(NoeudParent.coorX, NoeudParent.coorY, NoeudEnCours.coorX, NoeudEnCours.coorY, cas);
                 NoeudEnCours = NoeudParent; //Le noeud en cours devient le noeud parent afin de continuer la recherche
                 cptNoeuds++;
             }
+            tempsNavigation = Math.Round(tempsNavigation,1);
 
-            //Affichage dans la console des différentes caratéristiques du chemin trouvé
-            Console.WriteLine("Nombre de noeuds du chemin solution : " + cptNoeuds);
+            //Calcul de la sommes de noeuds
             sommeNoeuds = L_Ouverts.Count() + L_Fermes.Count();
-            Console.WriteLine("Somme des noeuds des listes Ouverts et Fermés : " + (L_Ouverts.Count()+ L_Fermes.Count()));
 
             return _LN;
         }
@@ -188,15 +192,17 @@ namespace IA_Project
                     else
                     {
                         // N2 est nouveau, MAJ et insertion dans les ouverts
-                        
+                        NodeSailBoat N2sail = (NodeSailBoat)N2;
+                        NodeSailBoat Nsail = (NodeSailBoat)N;
+
+                        double distancePoint = Math.Sqrt((Nsail.coorX - Xdestination) * (Nsail.coorX - Xdestination) + (Nsail.coorY - Ydestination) * (Nsail.coorY - Ydestination));
+
                         N2.SetGCost(N.GetGCost() + N.GetArcCost(N2,cas));
                         N2.SetNoeud_Parent(N);
-                        N2.calculCoutTotal(Xdestination,Ydestination,cas); // somme de GCost et HCost
+                        N2.calculCoutTotal(Xdestination,Ydestination,cas, distancePoint); // somme de GCost et HCost
                         this.InsertNewNodeInOpenList(N2);
 
                         //Affichage en blanc de la recherche de l'algorithme en traçant des segments entre le noeud en cours et le suivant
-                        NodeSailBoat N2sail = (NodeSailBoat)N2;
-                        NodeSailBoat Nsail = (NodeSailBoat)N;
                         DessinerSegment(Nsail.coorX, N2sail.coorX, Nsail.coorY, N2sail.coorY, this.penWhite);
                     }
                 }
