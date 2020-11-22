@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,6 +17,7 @@ namespace IA_Project
         SearchTree tree;
         private double xInit, yInit, xDest, yDest;
         static double tailleMap = 300;
+        private char cas;
 
 
         //A faire : edit un label pour dire qu'il y a une erreur
@@ -80,13 +82,14 @@ namespace IA_Project
                 else yDest = value;
             }
         }
+        public char Cas { get => cas; set => cas = value; }
 
         public AffichageGraphique()
         {
             InitializeComponent();
         }
 
-       //Listeners des boutons
+       //Listeners des boutons : à supprimer
         private void casAButton_Click(object sender, EventArgs e)
         {
             char cas = 'a';
@@ -136,6 +139,51 @@ namespace IA_Project
         }
 
 
+        //selection du vent permet de déterminer le cas et d'instancier les valeurs par défaut d'arrivée et de départ
+        private void selectionVent(object sender, EventArgs e)
+        {
+            string typeVent = ((RadioButton)(sender)).Name;
+            if(typeVent == "radioCasA")
+            {
+                Cas = 'a';
+                XInit = 100; YInit = 200; XDest = 200; YDest = 100;
+
+                //on met à jour les textBox pour afficher les valeurs par défaut de départ et d'arrivée : 
+                xDestBox.Text = XDest.ToString();
+                yDestBox.Text = YDest.ToString();
+
+                xInitBox.Text = XInit.ToString();
+                yInitBox.Text = YInit.ToString();
+
+            }
+            else if (typeVent == "radioCasB")
+            {
+                Cas = 'b';
+                XInit = 100; YInit = 200; XDest = 200; YDest = 100;
+
+                //on met à jour les textBox pour afficher les valeurs par défaut de départ et d'arrivée : 
+                xDestBox.Text = XDest.ToString();
+                yDestBox.Text = YDest.ToString();
+
+                xInitBox.Text = XInit.ToString();
+                yInitBox.Text = YInit.ToString();
+            }
+            else
+            {
+                Cas = 'c';
+                XInit = 200; YInit = 100; XDest = 100; YDest = 200;
+
+                //on met à jour les textBox pour afficher les valeurs par défaut de départ et d'arrivée : 
+                xDestBox.Text = XDest.ToString();
+                yDestBox.Text = YDest.ToString();
+
+                xInitBox.Text = XInit.ToString();
+                yInitBox.Text = YInit.ToString();
+            }
+        }
+
+
+
         //si on selectionne l'un des radio button on peut écrire dans les textbox associés, pas dans les autres
         private void radioPosInit_CheckedChanged(object sender, EventArgs e)
         {
@@ -148,7 +196,6 @@ namespace IA_Project
             yInitBox.Enabled = true;
         }
 
-
         private void radioPosFinale_CheckedChanged(object sender, EventArgs e)
         {
             //on change les paramètres des textBox de la position initiale pour rendre impossible la modification des valeurs
@@ -160,6 +207,8 @@ namespace IA_Project
             yDestBox.Enabled = true;
         }
 
+
+
         //reinitilise les positions de depart et d'arrivee et l'image de fond
         private void reinitButton_Click(object sender, EventArgs e)
         {
@@ -168,16 +217,48 @@ namespace IA_Project
             yInitBox.Text = valDefaut.ToString();
             xDestBox.Text = valDefaut.ToString();
             yDestBox.Text = valDefaut.ToString();
-            mapSeaBox.Image = Image.FromFile("sea.jpg");
+            
+        }
+
+
+
+        //on lance l'éxecution du code pour chercher le plus court chemin
+        private void btnLancerRecherche_Click(object sender, EventArgs e)
+        {
+
+            txtTempsNav.Text = "3";
+            txtTempsCalcul.Text = "3";
+            txtSommeNoeuds.Text = "3";
+            txtNbNoeuds.Text = "3";
+
+
+            //refresh la map et les valeurs de calcul du premier chemin
+            
+            ReinitiatiliserResultats();
+            
+            NodeSailBoat node0 = new NodeSailBoat(XInit, YInit);
+            tree = new SearchTree(XDest, YDest, Cas, mapSeaBox);
+
+            List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
+
+            tree.GetSearchTree(treeViewBox);
+            AffichageResultats(tree);
+
+        }
+
+
+
+
+        private void ReinitiatiliserResultats()
+        {
+
+            //mapSeaBox.Image = Image.FromFile("sea.jpg");
             txtTempsNav.Text = "";
             txtTempsCalcul.Text = "";
             txtSommeNoeuds.Text = "";
             txtNbNoeuds.Text = "";
         }
 
-
-        // verifier si on garde listener sur textChanged : risque de changer la valeur au milieu de l'execution du code ? 
-        //events lorsque le texte des textbox est modifié : 
 
         private void xInitBox_TextChanged(object sender, EventArgs e)
         {
@@ -196,10 +277,14 @@ namespace IA_Project
             XDest = Convert.ToDouble(xDestBox.Text);
         }
 
+       
+
         private void yDestBox_TextChanged(object sender, EventArgs e)
         {
             YDest = Convert.ToDouble(yDestBox.Text);
         }
+
+
 
         //permet d'obtenir les coordonnées du point cliqué sur la map
         private void mapSeaBox_Click(object sender, EventArgs e)
@@ -223,6 +308,8 @@ namespace IA_Project
                 yDestBox.Text = y.ToString();
             }
         } 
+
+
 
         private void AffichageResultats(SearchTree tree)
         {
