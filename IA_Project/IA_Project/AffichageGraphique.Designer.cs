@@ -53,14 +53,16 @@
             this.lblVent = new System.Windows.Forms.Label();
             this.lblSelection = new System.Windows.Forms.Label();
             this.lblResultats = new System.Windows.Forms.Label();
-            this.radioCasA = new System.Windows.Forms.RadioButton();
-            this.radioCasB = new System.Windows.Forms.RadioButton();
-            this.radioCasC = new System.Windows.Forms.RadioButton();
             this.btnLancerRecherche = new System.Windows.Forms.Button();
             this.lblCasA = new System.Windows.Forms.Label();
+            this.radioCasC = new System.Windows.Forms.RadioButton();
             this.lblCasB = new System.Windows.Forms.Label();
+            this.radioCasB = new System.Windows.Forms.RadioButton();
             this.lblCasC = new System.Windows.Forms.Label();
+            this.radioCasA = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.mapSeaBox)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mapSeaBox
@@ -303,44 +305,6 @@
             this.lblResultats.TabIndex = 38;
             this.lblResultats.Text = "Résultats :";
             // 
-            // radioCasA
-            // 
-            this.radioCasA.AutoSize = true;
-            this.radioCasA.Location = new System.Drawing.Point(12, 115);
-            this.radioCasA.Name = "radioCasA";
-            this.radioCasA.Size = new System.Drawing.Size(134, 30);
-            this.radioCasA.TabIndex = 39;
-            this.radioCasA.TabStop = true;
-            this.radioCasA.Text = "Vent constant 50km/h \r\nDirection 30° (nord-est)\r\n";
-            this.radioCasA.UseVisualStyleBackColor = true;
-            this.radioCasA.CheckedChanged += new System.EventHandler(this.selectionVent);
-            // 
-            // radioCasB
-            // 
-            this.radioCasB.AutoSize = true;
-            this.radioCasB.Location = new System.Drawing.Point(12, 214);
-            this.radioCasB.Name = "radioCasB";
-            this.radioCasB.Size = new System.Drawing.Size(143, 95);
-            this.radioCasB.TabIndex = 40;
-            this.radioCasB.TabStop = true;
-            this.radioCasB.Text = "Si y>150\r\nVent constant à 50km/h\r\nDirection 180° (ouest).\r\n\r\nSi y<=150\r\nVent cons" +
-    "tant à 20 km/h\r\nDirection 90° (nord)";
-            this.radioCasB.UseVisualStyleBackColor = true;
-            this.radioCasB.CheckedChanged += new System.EventHandler(this.selectionVent);
-            // 
-            // radioCasC
-            // 
-            this.radioCasC.AutoSize = true;
-            this.radioCasC.Location = new System.Drawing.Point(12, 387);
-            this.radioCasC.Name = "radioCasC";
-            this.radioCasC.Size = new System.Drawing.Size(143, 95);
-            this.radioCasC.TabIndex = 41;
-            this.radioCasC.TabStop = true;
-            this.radioCasC.Text = "Si y>150\r\nVent constant à 50km/h \r\ndirection 170° (ouest)\r\n\r\nSi y<=150\r\nVent cons" +
-    "tant à 20 km/h\r\nDirection 65° (nord-est)";
-            this.radioCasC.UseVisualStyleBackColor = true;
-            this.radioCasC.CheckedChanged += new System.EventHandler(this.selectionVent);
-            // 
             // btnLancerRecherche
             // 
             this.btnLancerRecherche.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -356,44 +320,91 @@
             // 
             this.lblCasA.AutoSize = true;
             this.lblCasA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCasA.Location = new System.Drawing.Point(53, 99);
+            this.lblCasA.Location = new System.Drawing.Point(56, 21);
             this.lblCasA.Name = "lblCasA";
             this.lblCasA.Size = new System.Drawing.Size(40, 13);
             this.lblCasA.TabIndex = 43;
             this.lblCasA.Text = "Cas A";
             // 
+            // radioCasC
+            // 
+            this.radioCasC.AutoSize = true;
+            this.radioCasC.Location = new System.Drawing.Point(15, 309);
+            this.radioCasC.Name = "radioCasC";
+            this.radioCasC.Size = new System.Drawing.Size(143, 95);
+            this.radioCasC.TabIndex = 41;
+            this.radioCasC.TabStop = true;
+            this.radioCasC.Text = "Si y>150\r\nVent constant à 50km/h \r\ndirection 170° (ouest)\r\n\r\nSi y<=150\r\nVent cons" +
+    "tant à 20 km/h\r\nDirection 65° (nord-est)";
+            this.radioCasC.UseVisualStyleBackColor = true;
+            this.radioCasC.CheckedChanged += new System.EventHandler(this.selectionVent);
+            // 
             // lblCasB
             // 
             this.lblCasB.AutoSize = true;
             this.lblCasB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCasB.Location = new System.Drawing.Point(53, 188);
+            this.lblCasB.Location = new System.Drawing.Point(56, 110);
             this.lblCasB.Name = "lblCasB";
             this.lblCasB.Size = new System.Drawing.Size(40, 13);
             this.lblCasB.TabIndex = 44;
             this.lblCasB.Text = "Cas B";
             // 
+            // radioCasB
+            // 
+            this.radioCasB.AutoSize = true;
+            this.radioCasB.Location = new System.Drawing.Point(15, 136);
+            this.radioCasB.Name = "radioCasB";
+            this.radioCasB.Size = new System.Drawing.Size(143, 95);
+            this.radioCasB.TabIndex = 40;
+            this.radioCasB.TabStop = true;
+            this.radioCasB.Text = "Si y>150\r\nVent constant à 50km/h\r\nDirection 180° (ouest).\r\n\r\nSi y<=150\r\nVent cons" +
+    "tant à 20 km/h\r\nDirection 90° (nord)";
+            this.radioCasB.UseVisualStyleBackColor = true;
+            this.radioCasB.CheckedChanged += new System.EventHandler(this.selectionVent);
+            // 
             // lblCasC
             // 
             this.lblCasC.AutoSize = true;
             this.lblCasC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCasC.Location = new System.Drawing.Point(56, 368);
+            this.lblCasC.Location = new System.Drawing.Point(59, 290);
             this.lblCasC.Name = "lblCasC";
             this.lblCasC.Size = new System.Drawing.Size(40, 13);
             this.lblCasC.TabIndex = 45;
             this.lblCasC.Text = "Cas C";
+            // 
+            // radioCasA
+            // 
+            this.radioCasA.AutoSize = true;
+            this.radioCasA.Checked = true;
+            this.radioCasA.Location = new System.Drawing.Point(15, 46);
+            this.radioCasA.Name = "radioCasA";
+            this.radioCasA.Size = new System.Drawing.Size(134, 30);
+            this.radioCasA.TabIndex = 39;
+            this.radioCasA.TabStop = true;
+            this.radioCasA.Text = "Vent constant 50km/h \r\nDirection 30° (nord-est)\r\n";
+            this.radioCasA.UseVisualStyleBackColor = true;
+            this.radioCasA.CheckedChanged += new System.EventHandler(this.selectionVent);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioCasA);
+            this.panel1.Controls.Add(this.lblCasA);
+            this.panel1.Controls.Add(this.lblCasC);
+            this.panel1.Controls.Add(this.radioCasC);
+            this.panel1.Controls.Add(this.lblCasB);
+            this.panel1.Controls.Add(this.radioCasB);
+            this.panel1.Location = new System.Drawing.Point(12, 75);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(180, 437);
+            this.panel1.TabIndex = 46;
             // 
             // AffichageGraphique
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 600);
-            this.Controls.Add(this.lblCasC);
-            this.Controls.Add(this.lblCasB);
-            this.Controls.Add(this.lblCasA);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnLancerRecherche);
-            this.Controls.Add(this.radioCasC);
-            this.Controls.Add(this.radioCasB);
-            this.Controls.Add(this.radioCasA);
             this.Controls.Add(this.lblResultats);
             this.Controls.Add(this.lblSelection);
             this.Controls.Add(this.lblVent);
@@ -423,6 +434,8 @@
             this.Name = "AffichageGraphique";
             this.Text = "AffichageGraphique";
             ((System.ComponentModel.ISupportInitialize)(this.mapSeaBox)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -454,12 +467,13 @@
         private System.Windows.Forms.Label lblVent;
         private System.Windows.Forms.Label lblSelection;
         private System.Windows.Forms.Label lblResultats;
-        private System.Windows.Forms.RadioButton radioCasA;
-        private System.Windows.Forms.RadioButton radioCasB;
-        private System.Windows.Forms.RadioButton radioCasC;
         private System.Windows.Forms.Button btnLancerRecherche;
         private System.Windows.Forms.Label lblCasA;
+        private System.Windows.Forms.RadioButton radioCasC;
         private System.Windows.Forms.Label lblCasB;
+        private System.Windows.Forms.RadioButton radioCasB;
         private System.Windows.Forms.Label lblCasC;
+        private System.Windows.Forms.RadioButton radioCasA;
+        private System.Windows.Forms.Panel panel1;
     }
 }

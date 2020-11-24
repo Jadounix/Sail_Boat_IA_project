@@ -17,7 +17,7 @@ namespace IA_Project
         SearchTree tree;
         private double xInit, yInit, xDest, yDest;
         static double tailleMap = 300;
-        private char cas;
+        private char cas = 'a';
 
 
         //A faire : edit un label pour dire qu'il y a une erreur
@@ -214,10 +214,10 @@ namespace IA_Project
         {
 
             //réinitialise le vent selectionné
-            Cas = '\0';
-            radioCasA.Checked = false;
-            radioCasB.Checked = false;
-            radioCasC.Checked = false;
+            radioCasA.Checked = true;
+            Cas = 'a';
+            /*radioCasB.Checked = false;
+            radioCasC.Checked = false;*/
 
 
 
@@ -303,7 +303,7 @@ namespace IA_Project
 
             }
             //si position finale selectionné on change les valeurs des textBox de la position finale
-            else
+            else if(radioPosFinale.Checked)
             {
                 xDestBox.Text = x.ToString();
                 yDestBox.Text = y.ToString();
