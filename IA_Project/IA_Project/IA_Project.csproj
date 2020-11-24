@@ -66,6 +66,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AffichageGraphique.aa-DJ.resx">
+      <DependentUpon>AffichageGraphique.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AffichageGraphique.resx">
       <DependentUpon>AffichageGraphique.cs</DependentUpon>
     </EmbeddedResource>

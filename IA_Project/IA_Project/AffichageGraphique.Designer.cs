@@ -38,9 +38,6 @@
             this.yInitBox = new System.Windows.Forms.TextBox();
             this.xDestBox = new System.Windows.Forms.TextBox();
             this.yDestBox = new System.Windows.Forms.TextBox();
-            this.casBButton = new System.Windows.Forms.Button();
-            this.casCButton = new System.Windows.Forms.Button();
-            this.casAButton = new System.Windows.Forms.Button();
             this.treeViewBox = new System.Windows.Forms.TreeView();
             this.radioPosInit = new System.Windows.Forms.RadioButton();
             this.radioPosFinale = new System.Windows.Forms.RadioButton();
@@ -60,6 +57,9 @@
             this.radioCasB = new System.Windows.Forms.RadioButton();
             this.radioCasC = new System.Windows.Forms.RadioButton();
             this.btnLancerRecherche = new System.Windows.Forms.Button();
+            this.lblCasA = new System.Windows.Forms.Label();
+            this.lblCasB = new System.Windows.Forms.Label();
+            this.lblCasC = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mapSeaBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +69,7 @@
             this.mapSeaBox.Cursor = System.Windows.Forms.Cursors.Cross;
             this.mapSeaBox.Image = ((System.Drawing.Image)(resources.GetObject("mapSeaBox.Image")));
             this.mapSeaBox.Location = new System.Drawing.Point(200, 86);
-            this.mapSeaBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mapSeaBox.Margin = new System.Windows.Forms.Padding(2);
             this.mapSeaBox.MaximumSize = new System.Drawing.Size(300, 301);
             this.mapSeaBox.MinimumSize = new System.Drawing.Size(300, 301);
             this.mapSeaBox.Name = "mapSeaBox";
@@ -156,39 +156,6 @@
             this.yDestBox.TabIndex = 20;
             this.yDestBox.TextChanged += new System.EventHandler(this.yDestBox_TextChanged);
             // 
-            // casBButton
-            // 
-            this.casBButton.Location = new System.Drawing.Point(74, 482);
-            this.casBButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.casBButton.Name = "casBButton";
-            this.casBButton.Size = new System.Drawing.Size(50, 30);
-            this.casBButton.TabIndex = 21;
-            this.casBButton.Text = "Cas B";
-            this.casBButton.UseVisualStyleBackColor = true;
-            this.casBButton.Click += new System.EventHandler(this.casBButton_Click);
-            // 
-            // casCButton
-            // 
-            this.casCButton.Location = new System.Drawing.Point(38, 530);
-            this.casCButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.casCButton.Name = "casCButton";
-            this.casCButton.Size = new System.Drawing.Size(50, 30);
-            this.casCButton.TabIndex = 22;
-            this.casCButton.Text = "Cas C";
-            this.casCButton.UseVisualStyleBackColor = true;
-            this.casCButton.Click += new System.EventHandler(this.casCButton_Click);
-            // 
-            // casAButton
-            // 
-            this.casAButton.Location = new System.Drawing.Point(7, 485);
-            this.casAButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.casAButton.Name = "casAButton";
-            this.casAButton.Size = new System.Drawing.Size(50, 30);
-            this.casAButton.TabIndex = 23;
-            this.casAButton.Text = "Cas A";
-            this.casAButton.UseVisualStyleBackColor = true;
-            this.casAButton.Click += new System.EventHandler(this.casAButton_Click);
-            // 
             // treeViewBox
             // 
             this.treeViewBox.Location = new System.Drawing.Point(556, 86);
@@ -225,12 +192,12 @@
             // 
             // reinitButton
             // 
-            this.reinitButton.Location = new System.Drawing.Point(315, 503);
+            this.reinitButton.Location = new System.Drawing.Point(85, 553);
             this.reinitButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.reinitButton.Name = "reinitButton";
-            this.reinitButton.Size = new System.Drawing.Size(75, 29);
+            this.reinitButton.Size = new System.Drawing.Size(107, 35);
             this.reinitButton.TabIndex = 27;
-            this.reinitButton.Text = "Réinitialiser";
+            this.reinitButton.Text = "REINITIALISER";
             this.reinitButton.UseVisualStyleBackColor = true;
             this.reinitButton.Click += new System.EventHandler(this.reinitButton_Click);
             // 
@@ -267,7 +234,7 @@
             // txtTempsNav
             // 
             this.txtTempsNav.Location = new System.Drawing.Point(755, 407);
-            this.txtTempsNav.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTempsNav.Margin = new System.Windows.Forms.Padding(2);
             this.txtTempsNav.Name = "txtTempsNav";
             this.txtTempsNav.Size = new System.Drawing.Size(76, 20);
             this.txtTempsNav.TabIndex = 31;
@@ -275,7 +242,7 @@
             // txtNbNoeuds
             // 
             this.txtNbNoeuds.Location = new System.Drawing.Point(755, 434);
-            this.txtNbNoeuds.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNbNoeuds.Margin = new System.Windows.Forms.Padding(2);
             this.txtNbNoeuds.Name = "txtNbNoeuds";
             this.txtNbNoeuds.Size = new System.Drawing.Size(76, 20);
             this.txtNbNoeuds.TabIndex = 32;
@@ -283,7 +250,7 @@
             // txtSommeNoeuds
             // 
             this.txtSommeNoeuds.Location = new System.Drawing.Point(755, 462);
-            this.txtSommeNoeuds.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSommeNoeuds.Margin = new System.Windows.Forms.Padding(2);
             this.txtSommeNoeuds.Name = "txtSommeNoeuds";
             this.txtSommeNoeuds.Size = new System.Drawing.Size(76, 20);
             this.txtSommeNoeuds.TabIndex = 33;
@@ -301,7 +268,7 @@
             // txtTempsCalcul
             // 
             this.txtTempsCalcul.Location = new System.Drawing.Point(755, 492);
-            this.txtTempsCalcul.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTempsCalcul.Margin = new System.Windows.Forms.Padding(2);
             this.txtTempsCalcul.Name = "txtTempsCalcul";
             this.txtTempsCalcul.Size = new System.Drawing.Size(76, 20);
             this.txtTempsCalcul.TabIndex = 35;
@@ -309,7 +276,7 @@
             // lblVent
             // 
             this.lblVent.AutoSize = true;
-            this.lblVent.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblVent.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.lblVent.Location = new System.Drawing.Point(24, 37);
             this.lblVent.Name = "lblVent";
             this.lblVent.Size = new System.Drawing.Size(120, 18);
@@ -319,7 +286,7 @@
             // lblSelection
             // 
             this.lblSelection.AutoSize = true;
-            this.lblSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblSelection.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.lblSelection.Location = new System.Drawing.Point(232, 37);
             this.lblSelection.Name = "lblSelection";
             this.lblSelection.Size = new System.Drawing.Size(224, 18);
@@ -329,7 +296,7 @@
             // lblResultats
             // 
             this.lblResultats.AutoSize = true;
-            this.lblResultats.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblResultats.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.lblResultats.Location = new System.Drawing.Point(666, 37);
             this.lblResultats.Name = "lblResultats";
             this.lblResultats.Size = new System.Drawing.Size(89, 18);
@@ -339,7 +306,7 @@
             // radioCasA
             // 
             this.radioCasA.AutoSize = true;
-            this.radioCasA.Location = new System.Drawing.Point(12, 86);
+            this.radioCasA.Location = new System.Drawing.Point(12, 115);
             this.radioCasA.Name = "radioCasA";
             this.radioCasA.Size = new System.Drawing.Size(134, 30);
             this.radioCasA.TabIndex = 39;
@@ -351,7 +318,7 @@
             // radioCasB
             // 
             this.radioCasB.AutoSize = true;
-            this.radioCasB.Location = new System.Drawing.Point(12, 159);
+            this.radioCasB.Location = new System.Drawing.Point(12, 214);
             this.radioCasB.Name = "radioCasB";
             this.radioCasB.Size = new System.Drawing.Size(143, 95);
             this.radioCasB.TabIndex = 40;
@@ -364,7 +331,7 @@
             // radioCasC
             // 
             this.radioCasC.AutoSize = true;
-            this.radioCasC.Location = new System.Drawing.Point(12, 292);
+            this.radioCasC.Location = new System.Drawing.Point(12, 387);
             this.radioCasC.Name = "radioCasC";
             this.radioCasC.Size = new System.Drawing.Size(143, 95);
             this.radioCasC.TabIndex = 41;
@@ -376,19 +343,53 @@
             // 
             // btnLancerRecherche
             // 
-            this.btnLancerRecherche.Location = new System.Drawing.Point(465, 530);
+            this.btnLancerRecherche.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnLancerRecherche.Location = new System.Drawing.Point(249, 553);
             this.btnLancerRecherche.Name = "btnLancerRecherche";
-            this.btnLancerRecherche.Size = new System.Drawing.Size(197, 23);
+            this.btnLancerRecherche.Size = new System.Drawing.Size(254, 35);
             this.btnLancerRecherche.TabIndex = 42;
-            this.btnLancerRecherche.Text = "Rechercher le plus court chemin";
-            this.btnLancerRecherche.UseVisualStyleBackColor = true;
+            this.btnLancerRecherche.Text = "RECHERCHER LE PLUS COURT CHEMIN";
+            this.btnLancerRecherche.UseVisualStyleBackColor = false;
             this.btnLancerRecherche.Click += new System.EventHandler(this.btnLancerRecherche_Click);
+            // 
+            // lblCasA
+            // 
+            this.lblCasA.AutoSize = true;
+            this.lblCasA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCasA.Location = new System.Drawing.Point(53, 99);
+            this.lblCasA.Name = "lblCasA";
+            this.lblCasA.Size = new System.Drawing.Size(40, 13);
+            this.lblCasA.TabIndex = 43;
+            this.lblCasA.Text = "Cas A";
+            // 
+            // lblCasB
+            // 
+            this.lblCasB.AutoSize = true;
+            this.lblCasB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCasB.Location = new System.Drawing.Point(53, 188);
+            this.lblCasB.Name = "lblCasB";
+            this.lblCasB.Size = new System.Drawing.Size(40, 13);
+            this.lblCasB.TabIndex = 44;
+            this.lblCasB.Text = "Cas B";
+            // 
+            // lblCasC
+            // 
+            this.lblCasC.AutoSize = true;
+            this.lblCasC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCasC.Location = new System.Drawing.Point(56, 368);
+            this.lblCasC.Name = "lblCasC";
+            this.lblCasC.Size = new System.Drawing.Size(40, 13);
+            this.lblCasC.TabIndex = 45;
+            this.lblCasC.Text = "Cas C";
             // 
             // AffichageGraphique
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(858, 573);
+            this.ClientSize = new System.Drawing.Size(858, 600);
+            this.Controls.Add(this.lblCasC);
+            this.Controls.Add(this.lblCasB);
+            this.Controls.Add(this.lblCasA);
             this.Controls.Add(this.btnLancerRecherche);
             this.Controls.Add(this.radioCasC);
             this.Controls.Add(this.radioCasB);
@@ -408,9 +409,6 @@
             this.Controls.Add(this.radioPosFinale);
             this.Controls.Add(this.radioPosInit);
             this.Controls.Add(this.treeViewBox);
-            this.Controls.Add(this.casAButton);
-            this.Controls.Add(this.casCButton);
-            this.Controls.Add(this.casBButton);
             this.Controls.Add(this.yDestBox);
             this.Controls.Add(this.xDestBox);
             this.Controls.Add(this.yInitBox);
@@ -420,7 +418,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.mapSeaBox);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AffichageGraphique";
             this.Text = "AffichageGraphique";
             ((System.ComponentModel.ISupportInitialize)(this.mapSeaBox)).EndInit();
@@ -440,9 +439,6 @@
         private System.Windows.Forms.TextBox yInitBox;
         private System.Windows.Forms.TextBox xDestBox;
         private System.Windows.Forms.TextBox yDestBox;
-        private System.Windows.Forms.Button casBButton;
-        private System.Windows.Forms.Button casCButton;
-        private System.Windows.Forms.Button casAButton;
         private System.Windows.Forms.TreeView treeViewBox;
         private System.Windows.Forms.RadioButton radioPosInit;
         private System.Windows.Forms.RadioButton radioPosFinale;
@@ -462,5 +458,8 @@
         private System.Windows.Forms.RadioButton radioCasB;
         private System.Windows.Forms.RadioButton radioCasC;
         private System.Windows.Forms.Button btnLancerRecherche;
+        private System.Windows.Forms.Label lblCasA;
+        private System.Windows.Forms.Label lblCasB;
+        private System.Windows.Forms.Label lblCasC;
     }
 }

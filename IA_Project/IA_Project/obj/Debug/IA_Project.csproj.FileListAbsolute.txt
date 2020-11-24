@@ -28,3 +28,6 @@ C:\Users\Jade\Desktop\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Pr
 C:\Users\Jade\Desktop\Sail_Boat_IA_project\IA_Project\IA_Project\bin\Debug\IA_Project.exe.config
 C:\Users\Jade\Desktop\Sail_Boat_IA_project\IA_Project\IA_Project\bin\Debug\IA_Project.exe
 C:\Users\Jade\Desktop\Sail_Boat_IA_project\IA_Project\IA_Project\bin\Debug\IA_Project.pdb
+D:\Documents\ENSC\2A\IA\Projet\code\Sail_Boat_IA_project\IA_Project\IA_Project\bin\Debug\aa-DJ\IA_Project.resources.dll
+D:\Documents\ENSC\2A\IA\Projet\code\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\IA_Project.AffichageGraphique.aa-DJ.resources
+D:\Documents\ENSC\2A\IA\Projet\code\Sail_Boat_IA_project\IA_Project\IA_Project\obj\Debug\aa-DJ\IA_Project.resources.dll

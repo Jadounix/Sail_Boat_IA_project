@@ -90,7 +90,7 @@ namespace IA_Project
         }
 
        //Listeners des boutons : à supprimer
-        private void casAButton_Click(object sender, EventArgs e)
+        /*private void casAButton_Click(object sender, EventArgs e)
         {
             char cas = 'a';
             XInit = 100; YInit = 200; XDest = 200; YDest = 100;
@@ -137,7 +137,7 @@ namespace IA_Project
             AffichageResultats(tree);
 
         }
-
+        */
 
         //selection du vent permet de déterminer le cas et d'instancier les valeurs par défaut d'arrivée et de départ
         private void selectionVent(object sender, EventArgs e)
@@ -209,14 +209,26 @@ namespace IA_Project
 
 
 
-        //reinitilise les positions de depart et d'arrivee et l'image de fond
+        //reinitilise les valeurs du form 
         private void reinitButton_Click(object sender, EventArgs e)
         {
+
+            //réinitialise le vent selectionné
+            Cas = '\0';
+            radioCasA.Checked = false;
+            radioCasB.Checked = false;
+            radioCasC.Checked = false;
+
+
+
+            //reinitialise les valeurs de départ et d'arrivée
             double valDefaut = 0;
             xInitBox.Text = valDefaut.ToString();
             yInitBox.Text = valDefaut.ToString();
             xDestBox.Text = valDefaut.ToString();
             yDestBox.Text = valDefaut.ToString();
+
+            
             
         }
 
@@ -226,16 +238,9 @@ namespace IA_Project
         private void btnLancerRecherche_Click(object sender, EventArgs e)
         {
 
-            txtTempsNav.Text = "3";
-            txtTempsCalcul.Text = "3";
-            txtSommeNoeuds.Text = "3";
-            txtNbNoeuds.Text = "3";
-
-
             //refresh la map et les valeurs de calcul du premier chemin
             
             ReinitiatiliserResultats();
-            
             NodeSailBoat node0 = new NodeSailBoat(XInit, YInit);
             tree = new SearchTree(XDest, YDest, Cas, mapSeaBox);
 
@@ -270,14 +275,10 @@ namespace IA_Project
             YInit = Convert.ToDouble(yInitBox.Text);
         }
 
-
-
         private void xDestBox_TextChanged(object sender, EventArgs e)
         {
             XDest = Convert.ToDouble(xDestBox.Text);
-        }
-
-       
+        }      
 
         private void yDestBox_TextChanged(object sender, EventArgs e)
         {
