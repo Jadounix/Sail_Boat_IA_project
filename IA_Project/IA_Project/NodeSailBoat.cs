@@ -124,7 +124,7 @@ namespace IA_Project
             {
                 cost = distance / vitesseMax;
             }
-            return (cost);
+            return (0);
         }
 
         public override void calculCoutTotal(double xArivee, double yArrivee, char cas,double distancePoint)
