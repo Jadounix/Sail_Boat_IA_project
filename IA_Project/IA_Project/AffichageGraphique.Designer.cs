@@ -61,6 +61,7 @@
             this.lblCasC = new System.Windows.Forms.Label();
             this.radioCasA = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCredits = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mapSeaBox)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -308,7 +309,7 @@
             // btnLancerRecherche
             // 
             this.btnLancerRecherche.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnLancerRecherche.Location = new System.Drawing.Point(249, 553);
+            this.btnLancerRecherche.Location = new System.Drawing.Point(268, 553);
             this.btnLancerRecherche.Name = "btnLancerRecherche";
             this.btnLancerRecherche.Size = new System.Drawing.Size(254, 35);
             this.btnLancerRecherche.TabIndex = 42;
@@ -398,11 +399,21 @@
             this.panel1.Size = new System.Drawing.Size(180, 437);
             this.panel1.TabIndex = 46;
             // 
+            // lblCredits
+            // 
+            this.lblCredits.AutoSize = true;
+            this.lblCredits.Location = new System.Drawing.Point(709, 593);
+            this.lblCredits.Name = "lblCredits";
+            this.lblCredits.Size = new System.Drawing.Size(137, 13);
+            this.lblCredits.TabIndex = 47;
+            this.lblCredits.Text = "PETIT Jade - BINET Coline";
+            // 
             // AffichageGraphique
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(858, 600);
+            this.ClientSize = new System.Drawing.Size(858, 613);
+            this.Controls.Add(this.lblCredits);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnLancerRecherche);
             this.Controls.Add(this.lblResultats);
@@ -475,5 +486,6 @@
         private System.Windows.Forms.Label lblCasC;
         private System.Windows.Forms.RadioButton radioCasA;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblCredits;
     }
 }

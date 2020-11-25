@@ -17,7 +17,7 @@ namespace IA_Project
         SearchTree tree;
         private double xInit, yInit, xDest, yDest;
         static double tailleMap = 300;
-        private char cas = 'a';
+        private char cas;
 
 
         //A faire : edit un label pour dire qu'il y a une erreur
@@ -27,11 +27,11 @@ namespace IA_Project
             {
                 if(value<0)
                 {
-                    xInit = 0;
+                    xInitBox.Text = 0.ToString();
                 }
                 else if (value> tailleMap)
                 {
-                    xInit = tailleMap;
+                    xInitBox.Text = tailleMap.ToString();
                 }
                 else xInit = value;
 
@@ -43,11 +43,11 @@ namespace IA_Project
             {
                 if (value < 0)
                 {
-                    yInit = 0;
+                    yInitBox.Text = 0.ToString();
                 }
                 else if (value > tailleMap)
                 {
-                    yInit = tailleMap;
+                    yInitBox.Text = tailleMap.ToString();
                 }
                 else yInit = value;
             }
@@ -58,11 +58,11 @@ namespace IA_Project
             {
                 if (value < 0)
                 {
-                    xDest = 0;
+                    xDestBox.Text = 0.ToString();
                 }
                 else if (value > tailleMap)
                 {
-                    xDest = tailleMap;
+                    xDestBox.Text = tailleMap.ToString();
                 }
                 else xDest = value;
             }
@@ -73,11 +73,11 @@ namespace IA_Project
             {
                 if (value < 0)
                 {
-                    yDest = 0;
+                    yDestBox.Text = 0.ToString();
                 }
                 else if (value > tailleMap)
                 {
-                    yDest = tailleMap;
+                    yDestBox.Text = tailleMap.ToString();
                 }
                 else yDest = value;
             }
@@ -87,6 +87,18 @@ namespace IA_Project
         public AffichageGraphique()
         {
             InitializeComponent();
+
+            //on initialise les valeurs par défaut du form : cas A et coordonnées associées
+
+            cas = 'a';
+
+            XInit = 100; YInit = 200; XDest = 200; YDest = 100;
+            //on met à jour les textBox pour afficher les valeurs par défaut de départ et d'arrivée : 
+            xDestBox.Text = XDest.ToString();
+            yDestBox.Text = YDest.ToString();
+
+            xInitBox.Text = XInit.ToString();
+            yInitBox.Text = YInit.ToString();
         }
 
        //Listeners des boutons : à supprimer
@@ -209,27 +221,32 @@ namespace IA_Project
 
 
 
-        //reinitilise les valeurs du form 
+        //reinitilise les valeurs et résultats du form 
         private void reinitButton_Click(object sender, EventArgs e)
         {
 
             //réinitialise le vent selectionné
             radioCasA.Checked = true;
             Cas = 'a';
-            /*radioCasB.Checked = false;
-            radioCasC.Checked = false;*/
 
 
 
-            //reinitialise les valeurs de départ et d'arrivée
-            double valDefaut = 0;
-            xInitBox.Text = valDefaut.ToString();
-            yInitBox.Text = valDefaut.ToString();
-            xDestBox.Text = valDefaut.ToString();
-            yDestBox.Text = valDefaut.ToString();
+            //reinitialise les valeurs de départ et d'arrivée pour le cas A
+            XInit = 100; YInit = 200; XDest = 200; YDest = 100;
 
-            
-            
+            //on met à jour les textBox pour afficher les valeurs par défaut de départ et d'arrivée : 
+            xDestBox.Text = XDest.ToString();
+            yDestBox.Text = YDest.ToString();
+
+            xInitBox.Text = XInit.ToString();
+            yInitBox.Text = YInit.ToString();
+
+            //reinitialiser la partie résultats : map + search tree + données dans textBox
+            ReinitiatiliserResultats();
+
+
+
+
         }
 
 
@@ -240,7 +257,7 @@ namespace IA_Project
 
             //refresh la map et les valeurs de calcul du premier chemin
             
-            ReinitiatiliserResultats();
+            //ReinitiatiliserResultats();
             NodeSailBoat node0 = new NodeSailBoat(XInit, YInit);
             tree = new SearchTree(XDest, YDest, Cas, mapSeaBox);
 
@@ -257,11 +274,13 @@ namespace IA_Project
         private void ReinitiatiliserResultats()
         {
 
-            //mapSeaBox.Image = Image.FromFile("sea.jpg");
+            mapSeaBox.Image = Image.FromFile("sea.jpg");
+            treeViewBox.Nodes.Clear();
             txtTempsNav.Text = "";
             txtTempsCalcul.Text = "";
             txtSommeNoeuds.Text = "";
             txtNbNoeuds.Text = "";
+
         }
 
 
@@ -317,7 +336,15 @@ namespace IA_Project
             txtNbNoeuds.Text = tree.cptNoeuds.ToString();
             txtSommeNoeuds.Text = tree.sommeNoeuds.ToString();
             txtTempsCalcul.Text = tree.tempsCalcul;
-            txtTempsNav.Text = tree.tempsNavigation.ToString() + " heure(s)";
+
+            //txtTempsNav.Text = tree.tempsNavigation.ToString() + " heure(s)";
+            txtTempsNav.Text = ConvertirTempsNav(tree.tempsNavigation);
+        }
+
+        private string ConvertirTempsNav(double temps)
+        {
+            string tempsNav = TimeSpan.FromHours(temps).ToString();
+            return tempsNav;
         }
 
     }
