@@ -21,6 +21,7 @@ namespace IA_Project
         public PictureBox picture;
         public Graphics graphic;
         public Pen penWhite;
+        //attributs relatifs au plus court chemin trouvé
         public int cptNoeuds, sommeNoeuds;
         public string tempsCalcul;
         public double tempsNavigation;
@@ -151,7 +152,7 @@ namespace IA_Project
             }
             tempsNavigation = Math.Round(tempsNavigation,1);
 
-            //Calcul de la sommes de noeuds
+            //Calcul de la somme de noeuds
             sommeNoeuds = L_Ouverts.Count() + L_Fermes.Count();
 
             return _LN;

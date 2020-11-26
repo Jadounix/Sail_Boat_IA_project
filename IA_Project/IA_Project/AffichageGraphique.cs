@@ -20,16 +20,15 @@ namespace IA_Project
         private char cas;
 
 
-        //A faire : edit un label pour dire qu'il y a une erreur
         public double XInit { 
             get => xInit;
             set
             {
-                if(value<0)
+                if(value<0) //si on essaie de mettre un point de départ à une position x inférieur à 0, on force la limite à 0
                 {
                     xInitBox.Text = 0.ToString();
                 }
-                else if (value> tailleMap)
+                else if (value> tailleMap) // Pareil pour un point de départ position > la taille de la map
                 {
                     xInitBox.Text = tailleMap.ToString();
                 }
@@ -89,9 +88,7 @@ namespace IA_Project
             InitializeComponent();
 
             //on initialise les valeurs par défaut du form : cas A et coordonnées associées
-
             cas = 'a';
-
             XInit = 100; YInit = 200; XDest = 200; YDest = 100;
             //on met à jour les textBox pour afficher les valeurs par défaut de départ et d'arrivée : 
             xDestBox.Text = XDest.ToString();
@@ -101,55 +98,6 @@ namespace IA_Project
             yInitBox.Text = YInit.ToString();
         }
 
-       //Listeners des boutons : à supprimer
-        /*private void casAButton_Click(object sender, EventArgs e)
-        {
-            char cas = 'a';
-            XInit = 100; YInit = 200; XDest = 200; YDest = 100;
-
-            // déterminer le Node0
-            NodeSailBoat node0 = new NodeSailBoat(XInit, YInit);
-
-            //cree le searchTree
-            tree = new SearchTree(XDest,YDest,cas,mapSeaBox);
-
-            // appeler RechecheA et afficher la solution*
-            List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
-            tree.GetSearchTree(treeViewBox);
-            AffichageResultats(tree);
-
-        }
-
-        private void casBButton_Click(object sender, EventArgs e)
-        {
-            char cas = 'b';
-            XInit = 100; YInit = 200; XDest = 200; YDest = 100;
-
-            NodeSailBoat node0 = new NodeSailBoat(XInit, YInit);
-            tree = new SearchTree(XDest, YDest, cas, mapSeaBox);
-
-            List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
-
-            tree.GetSearchTree(treeViewBox);
-            AffichageResultats(tree);
-
-        }
-
-        private void casCButton_Click(object sender, EventArgs e)
-        {
-            char cas = 'c';
-            XInit = 200; YInit = 100; XDest = 100; YDest = 200;
-
-            NodeSailBoat node0 = new NodeSailBoat(XInit, YInit);
-            tree = new SearchTree(XDest, YDest, cas, mapSeaBox);
-
-            List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
-
-            tree.GetSearchTree(treeViewBox);
-            AffichageResultats(tree);
-
-        }
-        */
 
         //selection du vent permet de déterminer le cas et d'instancier les valeurs par défaut d'arrivée et de départ
         private void selectionVent(object sender, EventArgs e)
@@ -196,7 +144,8 @@ namespace IA_Project
 
 
 
-        //si on selectionne l'un des radio button on peut écrire dans les textbox associés, pas dans les autres
+        //si on selectionne l'un des radio button de position,
+        //on peut écrire dans les textbox associés, pas dans les autres
         private void radioPosInit_CheckedChanged(object sender, EventArgs e)
         {
             //on change les paramètres des textBox de la destination pour rendre impossible la modification des valeurs
@@ -255,9 +204,6 @@ namespace IA_Project
         private void btnLancerRecherche_Click(object sender, EventArgs e)
         {
 
-            //refresh la map et les valeurs de calcul du premier chemin
-            
-            //ReinitiatiliserResultats();
             NodeSailBoat node0 = new NodeSailBoat(XInit, YInit);
             tree = new SearchTree(XDest, YDest, Cas, mapSeaBox);
 
@@ -270,7 +216,7 @@ namespace IA_Project
 
 
 
-
+        //réinitiailise les resultats : searchtree, textBox et Map
         private void ReinitiatiliserResultats()
         {
 
@@ -284,21 +230,19 @@ namespace IA_Project
         }
 
 
+        //chaque fois que le textBox est modifié, on met à jour la variable X ou Y associée
         private void xInitBox_TextChanged(object sender, EventArgs e)
         {
             XInit = Convert.ToDouble(xInitBox.Text);
         }
-
         private void yInitBox_TextChanged(object sender, EventArgs e)
         {
             YInit = Convert.ToDouble(yInitBox.Text);
         }
-
         private void xDestBox_TextChanged(object sender, EventArgs e)
         {
             XDest = Convert.ToDouble(xDestBox.Text);
         }      
-
         private void yDestBox_TextChanged(object sender, EventArgs e)
         {
             YDest = Convert.ToDouble(yDestBox.Text);
@@ -314,14 +258,14 @@ namespace IA_Project
             x = me.X;
             y = me.Y;
 
-            //si position initiale selectionné on change les valeurs des textBox de la position initiale
+            //si 'position initiale' selectionnée, on change les valeurs des textBox de la position initiale
             if(radioPosInit.Checked)
             {
                 xInitBox.Text = x.ToString();
                 yInitBox.Text = y.ToString();
 
             }
-            //si position finale selectionné on change les valeurs des textBox de la position finale
+            //si position finale selectionnée on change les valeurs des textBox de la position finale
             else if(radioPosFinale.Checked)
             {
                 xDestBox.Text = x.ToString();
@@ -331,16 +275,16 @@ namespace IA_Project
 
 
 
+        //affiche les différentes informations textuelles concernant le plus court chemin trouvé
         private void AffichageResultats(SearchTree tree)
         {
-            txtNbNoeuds.Text = tree.cptNoeuds.ToString();
-            txtSommeNoeuds.Text = tree.sommeNoeuds.ToString();
-            txtTempsCalcul.Text = tree.tempsCalcul;
-
-            //txtTempsNav.Text = tree.tempsNavigation.ToString() + " heure(s)";
-            txtTempsNav.Text = ConvertirTempsNav(tree.tempsNavigation);
+            txtNbNoeuds.Text = tree.cptNoeuds.ToString(); //nb noeuds du chemin trouvé
+            txtSommeNoeuds.Text = tree.sommeNoeuds.ToString(); //nb noeuds étudiés pendant la recherche
+            txtTempsCalcul.Text = tree.tempsCalcul; //temps passé par le compilateur pour trouver la solution
+            txtTempsNav.Text = ConvertirTempsNav(tree.tempsNavigation); // temps de navigation pour parcourir le plus court chemin
         }
 
+        // fonction qui convertit le temps donné en double en un temps en TimeSpan (passe donc de 3.7h à 3h42 par exemple)
         private string ConvertirTempsNav(double temps)
         {
             string tempsNav = TimeSpan.FromHours(temps).ToString();

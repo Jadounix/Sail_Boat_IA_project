@@ -73,7 +73,7 @@ namespace IA_Project
             TotalCost = GCost + HCost;
         }
 
-        // Méthodes abstrates, donc à surcharger obligatoirement avec override dans une classe fille
+        // Méthodes abstraites, donc à surcharger obligatoirement avec override dans une classe fille
         public abstract bool IsEqual(GenericNode N2);
         public abstract double GetArcCost(GenericNode N2, char cas);
         public abstract bool EndState(double xArrivee, double yArrivee);

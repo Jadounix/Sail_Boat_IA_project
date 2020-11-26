@@ -16,7 +16,7 @@ namespace IA_Project
         public NodeSailBoat(double x, double y)
         {
             coorX = x; coorY = y;
-            tailleMap = 300;
+            tailleMap = 300; //on suppose ici que la map fait 300.
         }
 
         //Méthode ToString
@@ -45,7 +45,7 @@ namespace IA_Project
             return time_estimation(this.coorX, this.coorY, noeudSuivant.coorX, noeudSuivant.coorY,cas);
         }
 
-        //Méthode qui retourne vrai si le bateau est arrivé à sa destinatio et faux sinon
+        //Méthode qui retourne vrai si le bateau est arrivé à sa destination et faux sinon
         public override bool EndState(double xArrivee, double yArrivee)
         {
             bool fini = false;
@@ -114,7 +114,7 @@ namespace IA_Project
             double cost = 0;
             double distance = Math.Sqrt((this.coorX - xArivee) * (this.coorX - xArivee) + (this.coorY - yArrivee) * (this.coorY - yArrivee));
             //Calcul de la vitesse max du bateau en fonction du cas et à un angle de 45°
-            double vitesseMax = 0.9*50; //maximum dela fonction vitesse du bateau, à multiplier par la vitesse du vent
+            double vitesseMax = 0.9*50; //maximum de la fonction vitesse du bateau, à multiplier par la vitesse du vent
 
             if (distance > distancePoint)
             {
