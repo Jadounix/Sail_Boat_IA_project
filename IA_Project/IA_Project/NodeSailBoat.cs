@@ -13,10 +13,9 @@ namespace IA_Project
         public double tailleMap;
 
         //Constructeur
-        public NodeSailBoat(double x, double y)
+        public NodeSailBoat(double x, double y, double tailleMap)
         {
-            coorX = x; coorY = y;
-            tailleMap = 300; //on suppose ici que la map fait 300.
+            coorX = x; coorY = y; this.tailleMap = tailleMap;
         }
 
         //Méthode ToString
@@ -64,36 +63,36 @@ namespace IA_Project
             //à chaque fois on teste si le noeud est en dehors de la map ou pas
             if(!TestEnDehorsMap(this.coorX + 1, this.coorY))
             {
-                lsucc.Add(new NodeSailBoat(this.coorX + 1, this.coorY));
+                lsucc.Add(new NodeSailBoat(this.coorX + 1, this.coorY, this.tailleMap));
             }
             if (!TestEnDehorsMap(this.coorX - 1, this.coorY))
             {
-                lsucc.Add(new NodeSailBoat(this.coorX - 1, this.coorY));
+                lsucc.Add(new NodeSailBoat(this.coorX - 1, this.coorY, this.tailleMap));
             }
             if (!TestEnDehorsMap(this.coorX, this.coorY + 1))
             {
-                lsucc.Add(new NodeSailBoat(this.coorX, this.coorY + 1));
+                lsucc.Add(new NodeSailBoat(this.coorX, this.coorY + 1, this.tailleMap));
             }
             if (!TestEnDehorsMap(this.coorX, this.coorY - 1))
             {
-                lsucc.Add(new NodeSailBoat(this.coorX, this.coorY - 1));
+                lsucc.Add(new NodeSailBoat(this.coorX, this.coorY - 1, this.tailleMap));
             }
             //Déplacements en diaonale
             if (!TestEnDehorsMap(this.coorX + 1, this.coorY + 1)) 
             {
-                lsucc.Add(new NodeSailBoat(this.coorX + 1, this.coorY + 1));
+                lsucc.Add(new NodeSailBoat(this.coorX + 1, this.coorY + 1, this.tailleMap));
             }
             if (!TestEnDehorsMap(this.coorX + 1, this.coorY - 1))
             {
-                lsucc.Add(new NodeSailBoat(this.coorX + 1, this.coorY - 1));
+                lsucc.Add(new NodeSailBoat(this.coorX + 1, this.coorY - 1, this.tailleMap));
             }
             if (!TestEnDehorsMap(this.coorX - 1, this.coorY + 1))
             {
-                lsucc.Add(new NodeSailBoat(this.coorX - 1, this.coorY + 1));
+                lsucc.Add(new NodeSailBoat(this.coorX - 1, this.coorY + 1, this.tailleMap));
             }
             if (!TestEnDehorsMap(this.coorX - 1, this.coorY - 1))
             {
-                lsucc.Add(new NodeSailBoat(this.coorX - 1, this.coorY - 1));
+                lsucc.Add(new NodeSailBoat(this.coorX - 1, this.coorY - 1, this.tailleMap));
             }
             return lsucc;
         }

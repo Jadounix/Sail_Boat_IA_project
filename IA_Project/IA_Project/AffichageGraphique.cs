@@ -16,7 +16,7 @@ namespace IA_Project
     {
         SearchTree tree;
         private double xInit, yInit, xDest, yDest;
-        static double tailleMap = 300;
+        static double tailleMap = 300; // on définit que la taille de la map est fixe et déterminée à 300.
         private char cas;
 
 
@@ -204,7 +204,7 @@ namespace IA_Project
         private void btnLancerRecherche_Click(object sender, EventArgs e)
         {
 
-            NodeSailBoat node0 = new NodeSailBoat(XInit, YInit);
+            NodeSailBoat node0 = new NodeSailBoat(XInit, YInit, tailleMap);
             tree = new SearchTree(XDest, YDest, Cas, mapSeaBox);
 
             List<GenericNode> solution = tree.RechercheSolutionAEtoile(node0);
